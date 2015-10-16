@@ -1,1 +1,147 @@
 * Question and Answer Session with Keep A Child Alive
+
+** Focus on Social vs. Information Aspect
+
+- Design a prototype, train the young people to do the coding
+- Both are important, one leads to the other
+- Comfortable hanging out and then asking information talk
+- Connect on small things before moving to harder questions
+
+** Focus on Local Communities or Global
+
+- Programs in 5 countries, 7 different programs / sites
+  - Mostly HIV clinics, pediatric care -> full family care
+- Before, children were just dying (mother to child transmission)
+  - 50% of kids without treatment die by the age of 2
+- Children who reach their teenage years stop treatment
+  - Lack of support from parents, doctors,
+  - Large stigma associated with the drugs
+
+- Developing programs for young people: "what do you need?"
+- People emerge as natural leaders, they use them as peer educators in
+  a community
+  1) address needs of the community
+  2) forming whatsapp and private facebook groups
+
+- Programs are currently 60k people a year
+  - 45k in 10-20 age group, start with them (focus of project is 15 - 24)
+  - educational opportunities, learn to code
+- Create a movement
+  - the drugs are there
+  - programs are designed for babies and adults, lack of care in the
+    middle
+
+"I hate going to the adult clinic because men are hitting on me."
+
+- Not just clinical care
+- An application for people to ask questions and get information in a
+  society where these things (sexuality, hiv,) is stigmatized
+
+** HIV Treatment
+
+Once a day drug regiment, becomes a chronic illness that can be
+managed. Problem is access to the drugs in poorer countries.
+
+Drugs are free. Come to clinic every month or three months to get a
+pack of pills. Pills are taken once or twice per day.
+
+** The Youth
+
+We will get to talk to them tonight around 3pm over skype.
+
+"What unites young people is what divides them"
+
+Most of the people that we are serving are poor. Many haven't left
+their own country, they provide ways for hte people to connect across
+cultures.
+
+** Previous Efforts to Connect to Clinics without Stigma
+
+1. Peer Support
+
+If you haven't told family or friends that you are HIV positive, it is
+hard to explain to people why you are going to the clinic or taking a
+pill every day.
+
+Parents don't want to acknowledge the HIV status of their children.
+
+"Don't tell anyone about your HIV status." How can we help people make
+the transition through the teenage years in order to stay on the drugs
+and have a future.
+
+TREAT PEOPLE WITH DIGNITY
+
+** Ideas
+
+You know where the clinic is through the app, a buddy reaches out to
+you to talk about services for young people. "Come hang out with me."
+Then the doctors come to the youth rather than having to go to a
+random clinic.
+
+** Openness on Facebook / Whatsapp
+
+"Circles of disclosure." Some people have disclosed on these groups,
+but others do not have to be. The group can have people living with
+HIV or not.
+
+** Internet Access
+
+Programs are mostly in urban areas, so we are banking on the network
+connection. All of the youth clinics have wifi (+ internet
+cafes). Network can be spotty though. Mobile technology could be
+helpful for people who are off to boarding school.
+
+"Everybody has a cellphone, but not everyone has a smartphone."
+
+You can always go to an internet cafe (so not just a mobile app). They
+have pay as you go smartphones, so they may run out of network /
+mobile information and have to transition to the web based client.
+
+People have changing phone numbers all of the time. So, we cannot use
+phone numbers for identification.
+
+** Targeted Platforms: App or Website?
+
+Why not both? Or, do we even need our own app if we can just maximize
+our existing solutions.
+
+We need to decide what the best form for communication will be for
+this type of application.
+
+Many of these people do not have laptops.
+
+** Cultural Values
+
+We need to ensure that this is a very open community. So perhaps not
+to target a specific set of beliefs.
+
+** Organizers
+
+They will be involved in the communities, but the hope is to have a
+runway such that the organization would not have to continue to be
+involved.
+
+** Implement Chat
+
+They are happy to do either solution. Probably don't want to duplicate
+this.
+
+** Level of Confidentiality
+
+We want the user to be able to decide for themselves, but have an
+evolution of privacy as time goes on.
+
+http://thebody.com
+
+** Ultimate Goal
+
+Get people to come back to the clinic to get the drugs that treat this
+disease and prevent death.
+
+** Presentation Topics
+
+How do we get the application into the hands of the people who need to
+be using it? Talk to the leaders in the community, clinics?
+
+Perhaps providing a more political part of the application to effect
+social change. Petitions?
