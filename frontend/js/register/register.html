@@ -22,13 +22,25 @@
 
     <p class="header">Health Status</p>
     <div class="number mdl-textfield">
-      <select>
+        <select ng-model="status">
+            <option value="0">
+                Prefer Not to Disclose
+            </option>
+            <option value="1">
+                HIV Negative
+            </option>
+            <option value="2">
+                HIV Positive
+            </option>
+            <option value="3">
+                AIDS
+            </option>
         </select>
     </div>
 
     <div class="submit-button">
-        <button class="mdl-button mdl-button--raised mdl-button--accent" ng-click="login()">
-            Login
+        <button class="mdl-button mdl-button--raised mdl-button--accent" ng-click="register()">
+            Register
         </button>
     </div>
 </div>
