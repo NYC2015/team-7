@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from forms import ProfileForm
 from django.core.context_processors import csrf
+from django.contrib.auth import authenticate, login as django_login
 from django.http import HttpResponseRedirect
 from django.db import IntegrityError
 from models import *
@@ -16,29 +17,45 @@ def posts(request):
     posts = sorted(posts, key=lambda x: x.upvotes, reverse=True)
     return JsonResponse( {'posts' : posts })
 
-def get_user(request):
+def login(request):
 	username = request.POST['username']
-	phone_number = request.POST['phone_number']
 	password = request.POST['password']
-	disease = int(request.POST['disease'])
-
-	if User.objects.filter(username=username).exists():
-		user = User.objects.get(username=username)
+	user = authenticate(username=username, password=password)
+	if user:
+		django_login(request, user)
 		profile = Profile.objects.get(user=user)
 		return JsonResponse({
-								'user' : user.username, 
-								'phone_number': profile.current_phone_number,
-								'disease': profile.diseases
-							})
+				'user' : user.username,
+				'phone_number': profile.current_phone_number,
+				'disease': profile.diseases
+			})
 	else:
-		new_user = User.objects.create_user(username, password=password)
-		profile = Profile(user=new_user, current_phone_number=phone_number, diseases=disease)
-		profile.save()
-		return JsonResponse({
-								'user': new_user.username,
-								'phone_number': profile.current_phone_number,
-								'disease': profile.diseases
-							})
+		return JsonResponse({ 'message': 'Incorrect username or password' })
+	# username = request.POST['username']
+	# phone_number = request.POST['phone_number']
+	# password = request.POST['password']
+	# disease = int(request.POST['disease'])
+
+	# if User.objects.filter(username=username).exists():
+	# 	user = authenticate(username=username, password=password)
+	# 	if user:
+	# 		profile = Profile.objects.get(user=user)
+	# 		return JsonResponse({
+	# 								'user' : user.username, 
+	# 								'phone_number': profile.current_phone_number,
+	# 								'disease': profile.diseases
+	# 							})
+	# 	else:
+	# 		return JsonResponse({ 'message': 'Incorrect password.'})
+	# else:
+	# 	new_user = User.objects.create_user(username, password=password)
+	# 	profile = Profile(user=new_user, current_phone_number=phone_number, diseases=disease)
+	# 	profile.save()
+	# 	return JsonResponse({
+	# 							'user': new_user.username,
+	# 							'phone_number': profile.current_phone_number,
+	# 							'disease': profile.diseases
+	# 						})
 
 def update_password(request):
 	user = User.objects.get(username=request.POST['username'])

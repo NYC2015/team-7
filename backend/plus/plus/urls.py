@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^$', index),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^posts$', posts),
-    url(r'^get_user', get_user),
+    url(r'^login', login),
     url(r'^send', 'plus_twilio.send'),
     url(r'^receive', 'plus_twilio.receive'),
     url(r'^update_password', update_password),
