@@ -19,7 +19,7 @@
   </div>
 
   <div class="plus-spread full-width "
-        ng-if="!!Session.user.user">
+        ng-show="!!Session.user.user">
     <textarea ng-model="commentText"></textarea>
     <a class="mdl-button mdl-button--primary"
        ng-click="submit(commentText)">Send</a>
