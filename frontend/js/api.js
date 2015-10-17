@@ -35,7 +35,7 @@ var post = {
     body: "so there i was at the gorcery store",
     author: profile,
     votes: 50,
-    id: 'post',
+    id: 1,
     comments: [comment, comment, comment]
 };
 
