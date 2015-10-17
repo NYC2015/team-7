@@ -11,17 +11,15 @@
     <link rel="stylesheet" href="style/css/main.css">
   </head>
 
-  <body ng-app="plus"> 
+  <body ng-app="plus">
 
-    <div id="loading">
-      <div class="middle">
-        <loading-message />
-      </div>
-    </div>
+    <div ui-view></div>
 
     <div ng-include="'js/app.html?cache-bust=' + cachebust"> </div>
 
-    <script src="js/vendor/angular.min.js"></script>
+    <!--<script src="js/vendor/angular.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
+    <script src="js/vendor/router.min.js"></script>
     <script src="js/vendor/underscore.min.js"></script>
     <script src="js/community/controller.js"></script> 
     <script src="js/chat/controller.js"></script> 

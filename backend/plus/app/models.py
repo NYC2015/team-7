@@ -11,7 +11,7 @@ class Profile(models.Model):
 		(2, 'AIDS'),
 		(3, 'None')
 	)
-	diseases = models.IntegerField(max_length = 1, choices = DISEASE_CHOICES)
+	diseases = models.IntegerField(choices = DISEASE_CHOICES)
 	name = models.CharField(max_length = 100, blank = True)
 	pseudonym = models.CharField(max_length = 100, blank = True)
 	current_phone_number = models.CharField(max_length = 12)
@@ -27,17 +27,15 @@ class Message(models.Model):
 class Post(models.Model):
 	# community = models.ForeignKey(Community)
 	poster = models.ForeignKey(User)
-	upvotes = models.IntegerField(max_length = 5)
-	flags = models.IntegerField(max_length = 5) # downvotes
+	upvotes = models.IntegerField(default = 0)
+	flags = models.IntegerField(default = 0) # downvotes
 	title = models.TextField()
 	content = models.TextField()
 	date_created = models.DateField()
-	upVotes = models.IntegerField(default = 0)
 
 	def upVote(self):
-		self.upVotes += 1
+		self.upvotes += 1
 		self.save()
-
 
 # class Community(models.Model):
 # 	pass
