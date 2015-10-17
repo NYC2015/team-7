@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
 from django.http import JsonResponse
-from forms import ProfileForm
 from django.core.context_processors import csrf
 from django.core import serializers
 from django.contrib.auth import authenticate, login as django_login
@@ -9,7 +8,6 @@ from django.http import HttpResponseRedirect
 import json
 from models import *
 import datetime
-
 
 from django.core import serializers
 
@@ -129,4 +127,74 @@ def update_anonymity(request):
 	return JsonResponse({
 			'username': user.username,
 			'is_anonymous': profile.is_anonymous,
+		})
+
+def update_diseases(request):
+	username = request.POST['username']
+	diseases = int(request.POST['diseases'])
+	user = User.objects.get(username=username)
+	profile = Profile.objects.get(user=user)
+	profile.diseases = diseases
+	profile.save()
+	return JsonResponse({
+			'username': user.username,
+			'diseases': profile.diseases,
+		})
+
+def update_reveal_to_others(request):
+	username = request.POST['username']
+	reveal_to_others = request.POST['reveal_to_others'].lower() == 'true'
+	user = User.objects.get(username=username)
+	profile = Profile.objects.get(user=user)
+	profile.reveal_to_others = reveal_to_others
+	profile.save()
+	return JsonResponse({
+			'username': user.username,
+			'reveal_to_others': profile.reveal_to_others,
+		})
+
+def update_password(request):
+	username = request.POST['username']
+	password = request.POST['password']
+	user = User.objects.get(username=username)
+	user.set_password(password)
+	user.save()
+	return JsonResponse({
+			'username': user.username
+		})
+
+def update_name(request):
+	username = request.POST['username']
+	name = request.POST['name']
+	user = User.objects.get(username=username)
+	profile = Profile.objects.get(user=user)
+	profile.name = name
+	profile.save()
+	return JsonResponse({
+			'username': user.username,
+			'name': profile.name,
+		})
+
+def update_pseudonym(request):
+	username = request.POST['username']
+	pseudonym = request.POST['pseudonym']
+	user = User.objects.get(username=username)
+	profile = Profile.objects.get(user=user)
+	profile.pseudonym = pseudonym
+	profile.save()
+	return JsonResponse({
+			'username': user.username,
+			'pseudonym': profile.pseudonym,
+		})
+
+def update_current_phone_number(request):
+	username = request.POST['username']
+	current_phone_number = request.POST['current_phone_number']
+	user = User.objects.get(username=username)
+	profile = Profile.objects.get(user=user)
+	profile.current_phone_number = current_phone_number
+	profile.save()
+	return JsonResponse({
+			'username': user.username,
+			'current_phone_number': profile.current_phone_number,
 		})
