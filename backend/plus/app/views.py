@@ -28,12 +28,11 @@ def post(request):
             title=title,
             date_created=date_created)
    p.save()
-
    return JsonResponse({'post_id':p.id})
 
 def leaders(request):
    users = Profile.objects.all()
-   leaders = sorted(Profile.objects.all(), key=lambda x: x.reputation, reverse=True)[-30:]
+   leaders = sorted(Profile.objects.all(), key=lambda x: x.reputation)[:30]
    return JsonResponse({'leaders':leaders})
 
 # Make a comment
