@@ -3,6 +3,11 @@
 var plusProfileControllers = angular.module('plus.profile', []);
 
 plusProfileControllers.controller('profileCtrl', function($scope, api) {
+    $scope.status = {
+        none: "Prefer Not to Disclouse",
+        negative: "HIV Negative"
+    }
+    
     api.profile.current().then(function(profile) {
         $scope.profile = profile;
     });
