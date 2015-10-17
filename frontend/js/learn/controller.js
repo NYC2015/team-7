@@ -3,9 +3,6 @@
 var plusLearnControllers = angular.module('plus.learn', []);
 
 plusLearnControllers.controller('learnCtrl', function($scope, api) {
-    api.profile.current().success(function(profile) {
-        $scope.profile = profile;
-    });
 });
 /*var qa = [{title: "What is HIV?", 
 	   description: 'HIV is short for "human inmmunodeficiency virus."'},
