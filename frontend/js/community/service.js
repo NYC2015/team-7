@@ -11,6 +11,7 @@ angular.module('plus.community').service('communityService',
         };
 
         api.community.all().then(function(res) {
+            debugger;
             service.exports.list = res.data['posts'];
             service.ready.resolve();
         });
@@ -32,9 +33,9 @@ angular.module('plus.community').service('communityService',
 
         service.upvote = function(post) {
             api.community.upvote(post.id).then(function(res) {
-                if(!post.votes)
-                    post.votes = 0;
-                post.votes++;
+                if(!post.upvotes)
+                    post.upvotes = 0;
+                post.upvotes++;
             });
         };
 
