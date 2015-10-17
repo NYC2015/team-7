@@ -1,0 +1,25 @@
+{
+  "name": "plus",
+  "version": "0.0.1",
+  "description": "plus!",
+  "repository": {
+    "type": "git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "load-grunt-tasks": "~0.2.1",
+    "bower": "~1.2.6",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-compress": "v0.13.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-uglify": "~0.3.2",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-http-server": "~1.2.0",
+    "grunt-open": "~0.2.3",
+    "grunt-usemin": "2.4.0",
+    "grunt-tasks-list": "~0.1.1",
+    "grunt-ng-constant": "1.0.0",
+    "grunt-cache-breaker": "^1.0.1"
+  }
+}
