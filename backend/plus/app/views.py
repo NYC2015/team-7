@@ -17,7 +17,7 @@ def posts(request):
 def post(request):
    content = request.POST['content'] 
    author_id = request.POST['author']
-   author = models.Profile.objects.get(id=author_id)[0]
+   author = models.Profile.objects.get(id=author_id)
    title = request.POST['title'] 
    date_created = datetime.date.today()
    p = models.Post.objects.create_post(author=author,
@@ -32,7 +32,7 @@ def post(request):
 def comment(request):
    content = request.POST['content']
    author_id = request.POST['author']
-   author = models.Profile.objects.get(id=author_id)[0]
+   author = models.Profile.objects.get(id=author_id)
    c = models.Comment.objects.create_comment(author=author, content=content)
    c.save()
 
@@ -70,7 +70,7 @@ def index(request):
 
 def upboat(request):
     post_id = request.POST['post_id']
-    post = models.Post.objects.get(id= post_id)[0]
+    post = models.Post.objects.get(id= post_id)
     post.upvotes += 1
     post.save()
 
@@ -82,7 +82,7 @@ def upboat(request):
 
 def flag(request):
     post_id = request.POST['post_id']
-    post = models.Post.objects.get(id= post_id)[0]
+    post = models.Post.objects.get(id= post_id)
     post.flags += 1
     post.save()
     return JsonResponse({'message' : 'flagged'})
