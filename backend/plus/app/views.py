@@ -26,7 +26,6 @@ def posts(request):
     for post in posts:
         post['comments'] = map(obj_to_dict, Comment.objects.filter(post=post['id']))
 
-    print(posts)
     return JsonResponse({'posts':posts})
 
 # Make a post
@@ -44,10 +43,8 @@ def post(request):
    return JsonResponse({'post_id':p.id})
 
 def leaders(request):
-   users = Profile.objects.all()
-   leaders = sorted(Profile.objects.all(), key=lambda x: x.reputation)[:30]
-   leaders = map(obj_to_dict, leaders)
-   return JsonResponse({'leaders':leaders})
+   leaders = map(obj_to_dict, Profile.objects.all().order_by('reputation'))
+   return JsonResponse( {'leaders' : leaders[:30]} )
 
 # Make a comment
 def comment(request):
