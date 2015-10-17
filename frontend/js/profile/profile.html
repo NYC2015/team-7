@@ -1,17 +1,23 @@
 <div class="profile">
     <p class="header">Basic Information</p>
     <div class="basic box">
-        <input class="mdl-textfield__input" type="text" id="name"/>
+        <input class="mdl-textfield__input"
+               type="text" id="name"
+               ng-model="profile.name"/>
     </div>
 
     <p class="header">Location</p>
     <div class="location box">
-        <input class="mdl-textfield__input" type="text" id="location"/>
+        <input class="mdl-textfield__input"
+               type="text" id="location"
+               ng-model="profile.location"/>
     </div>
 
     <p class="header box">Bio</p>
     <div class="bio">
-        <textarea class="mdl-textfield__input" type="text" id="bio"></textarea>
+        <textarea class="mdl-textfield__input"
+                  type="text" id="bio"
+                  ng-model="profile.bio"></textarea>
     </div>
 
     <p class="header">Health Status</p>
@@ -23,30 +29,13 @@
                     <th>State</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
+            <tbod>
+                <tr ng-repeat="(key, value) in privacy">
                     <td>
-                        <input type="radio" name="status" value="none" checked/>
+                        <input type="radio" name="status" value="{{ key }}"
+                               ng-model="profile.status">
                     </td>
-                    <td>Prefer Not to Disclose</td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="radio" name="status" value="negative"/>
-                    </td>
-                    <td>HIV Negative</td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="radio" name="status" value="positive"/>
-                    </td>
-                    <td>HIV Positive</td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="radio" name="status" value="aids"/>
-                    </td>
-                    <td>AIDS</td>
+                    <td>{{ value }}</td>
                 </tr>
             </tbody>
         </table>
@@ -54,7 +43,6 @@
 
     <p class="header">Privacy</p>
     <div class="privacy">
-        
         <table class="mdl-data-table mdl-table-table--selectable mdl-shadow--2dp">
             <thead>
                 <tr>
@@ -63,23 +51,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr ng-repeat="(key, value) in privacy">
                     <td>
-                        <input type="radio" name="privacy" value="none" checked/>
+                        <input type="radio" name="privacy" value="{{ key }}"
+                               ng-model="profile.privacy">
                     </td>
-                    <td>Anonymous to All Users</td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="radio" name="privacy" value="positive"/>
-                    </td>
-                    <td>Known to HIV Positive Users</td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="radio" name="privacy" value="all"/>
-                    </td>
-                    <td>Known to all Users</td>
+                    <td>{{ value }}</td>
                 </tr>
             </tbody>
         </table>
