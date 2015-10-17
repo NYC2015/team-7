@@ -80,6 +80,11 @@ plusApi.factory('api', function($q, $http, Session) {
     };
 
     return {
+        text: {
+            send: function(body, to) {
+                
+            }
+        },
         profile: {
             get: function(username) {
                 return postData(path + "/profile", {
