@@ -8,7 +8,7 @@ plusProfileControllers.controller('profileCtrl', function($scope, api) {
         negative: "HIV Negative",
         positive: "HIV Postivie",
         aids: "AIDS",
-    }
+    };
     
     api.profile.current().then(function(profile) {
         $scope.profile = profile;
