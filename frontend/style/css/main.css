@@ -212,7 +212,8 @@
   transform: translateX(0px);
   display: flex;
   flex-direction: row;
-  justify-content: center; }
+  justify-content: center;
+  padding-bottom: 30px; }
 
 .page-content {
   flex-grow: 1;
@@ -242,7 +243,11 @@
   margin-right: 0.25em; }
 
 .post-comments {
-  font-size: 0.9em; }
+  font-size: 0.9em;
+  margin-right: 0.5em; }
+
+.post-author {
+  color: #777; }
 
 .action {
   cursor: pointer; }
