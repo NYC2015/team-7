@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('plus.community').service('communityService',
-    function(api, $q, $uibModal) {
+    function(api, $q, $uibModal, Session) {
         var service = {};
 
         service.ready = $q.defer();
@@ -11,7 +11,7 @@ angular.module('plus.community').service('communityService',
         };
 
         api.community.all().then(function(res) {
-            service.exports.list = res.posts;
+            service.exports.list = res.data['posts'];
             service.ready.resolve();
         });
 
@@ -21,22 +21,31 @@ angular.module('plus.community').service('communityService',
                 controller: 'StoryCreateCtrl'
             });
             modalInstance.result.then(function(story) {
-                story.author = "me";
+                story.author = Session.user.id;
                 //content author title
-                api.community.postStory(story).then(function(post) {
-                    service.exports.list.push(post);
+                api.community.postStory(story).then(function(res) {
+                    story.id = res.data['post_id'];
+                    service.exports.list.push(story);
                 });
             });
         };
 
         service.upvote = function(post) {
             api.community.upvote(post.id).then(function(res) {
+                if(!post.votes)
+                    post.votes = 0;
                 post.votes++;
             });
         };
 
         service.sendComment = function(post, text) {
-            api.community.postComment(post.id, text).then(function(comment) {
+            api.community.postComment(post.id, text).then(function(res) {
+                var comment = {
+                    content: text,
+                    post: post,
+                    id: res.data['comment_id']
+                };
+
                 post.comments.push(comment);
             });;
         };
