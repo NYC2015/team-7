@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 from app.views import *
-from app.plus_twlio import *
+from app.plus_twilio import *
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
