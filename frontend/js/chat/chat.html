@@ -1,0 +1,49 @@
+<div class="sidebar">
+    <div class="addMessage">
+        <a class="btn btn-xs" ng-class="{'btn-danger': notifications, 'btn-primary': !notifications}" ng-click="notifications = !notifications" href="">
+            <i class="fa" ng-class="{'fa-bell': !notifications, 'fa-bell-o': notifications}"></i>
+        </a>
+        <a class="btn btn-success btn-xs" ng-class="{'disabled': loading}" ng-click="newConversation()" href="">
+            <i class="fa fa-plus"></i>
+        </a>
+    </div>
+    <div class="conversation" ng-class="{'active': $parent.selected.key == user.key}" ng-click="selectConversation(user)" ng-repeat="user in users | orderBy: '-latest'">
+        {{ user.name == '' ? user.alias : user.name }}
+    </div>
+</div>
+<div class="main">
+    <div ng-show="selected === undefined" class="text-center">
+        <h3 class="text-muted" style="margin-top: 40px;">Select a conversation to get started.</h3>
+        <p class="text-muted">Or, start a new converstaion.</p>
+        <div ng-if="loading">
+            <br/>
+            <p class="text-muted"><i class="fa fa-3x fa-circle-o-notch fa-spin"></i></p>
+        </div>
+    </div>
+    <div ng-hide="selected === undefined">
+        <div class="top" style="width: 100%;">
+            To: <input type="text" class="input-xs to" placeholder="Address" ng-model="selected.alias">
+        </div>
+        <div class="messages" id="messages">
+            <table>
+                <tr>
+                    <td valign="bottom">
+                        <div ng-repeat="(index, message) in selected.messages | reverse">
+                            <div ng-if="index > 0 ? (selected.messages[selected.messages.length - index].timestamp.getTime() + 300000) < message.timestamp.getTime() : true" class="timestamp">
+                                {{ message.timestamp | date:"MMMM d h:mm a"}}
+                            </div>
+                            <div class="message" ng-class="{ 'sender': message.sender, 'receiver': !message.sender }" ng-bind-html="message.message.string">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="bottom">
+            <form role="form" ng-submit="send()">
+                <i ng-show="sending" class="fa fa-circle-o-notch fa-spin loading"></i>
+                <input class="form-control" ng-disabled="sending" ng-model="newMessage" type="text" id="newMessageText" placeholder="Message">
+            </form>
+        </div>
+    </div>
+</div>
