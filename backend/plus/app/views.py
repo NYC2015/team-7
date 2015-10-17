@@ -16,7 +16,8 @@ def posts(request):
 # Make a post
 def post(request):
    content = request.POST['content'] 
-   author = request.POST['author']
+   author_id = request.POST['author']
+   author = models.Profile.objects.get(id=author_id)[0]
    title = request.POST['title'] 
    date_created = datetime.date.today()
    p = models.Post.objects.create_post(author=author,
@@ -24,14 +25,20 @@ def post(request):
                                        title=title,
                                        date_created=date_created)
    p.save()
+
    return JsonResponse({'message':'Post Created'})
 
 # Make a comment
 def comment(request):
    content = request.POST['content']
-   author = request.POST['author']
+   author_id = request.POST['author']
+   author = models.Profile.objects.get(id=author_id)[0]
    c = models.Comment.objects.create_comment(author=author, content=content)
    c.save()
+
+   author.reputation += 1
+   author.save()
+
    return JsonResponse({'message':'Comment Created'})
 
 def get_user(request):
@@ -66,6 +73,11 @@ def upboat(request):
     post = models.Post.objects.get(id= post_id)[0]
     post.upvotes += 1
     post.save()
+
+    author = post.author
+    author.reputation += 1
+    author.save()
+    
     return JsonResponse( {'message' : 'upboated'} )
 
 def flag(request):
