@@ -38,8 +38,14 @@ var chatApp = angular.module('plus.chat', [
 chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Session) {
     var ref = new Firebase('https://plusapp.firebaseio.com');
 
+    var id = Session.user.id;
+    if (id == null) {
+        // probably dev box
+        id = -1;
+    }
+
     // get a reference to the current objects
-    var ourConversations = ref.child(Session.user.id);
+    var ourMessages = ref.child(id);
     
     $scope.newMessage = "";
 
@@ -105,11 +111,20 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
         };
     }
 
-    outConversations.on('value', function(obj) {
+    ourMessages.on('value', function(obj) {
+        // get the val
+        obj = obj.val();
+        
+        console.log(obj);
+        
         // load the conversations into the system
+        for(var i in obj) {
+            handleMessage(obj[i]);
+        }
     });
 
-    ourConversations.on('child_added', function(o) {
+    ourMessages.on('child_added', function(obj) {
+        var msg = obj.val();
         // We already populated self messages earlier. This assumes a one-device
         // model of the user.
         if(msg.self) { return; }
@@ -160,7 +175,9 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
 
         $scope.sending = true;
 
-        ourConversations.push({
+        var toUser = $scope.selected.alias;
+
+        var msg = {
             to: [{
                 alias: $scope.selected.alias,
             }],
@@ -170,7 +187,9 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
             components: {
                 "airdispat.ch/chat/body": {string: $scope.newMessage},
             },    
-        }, function() {
+        }
+
+        ref.child(toUser).push(msg, function() {
             // callback
             $scope.sending = false;
 
@@ -188,6 +207,9 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
             }, 0);
 
             $scope.newMessage = "";
+
+            // this can just sort of happen, no worries
+            ourMessages.push(msg);
         });
     }
 
