@@ -1,0 +1,31 @@
+* High School Presentations
+
+** Posse-tive
+
+- Login, Register
+- Anonymous Toggle
+- Bio, Favorite Posts, Favorite Recipies?
+- Map that shows where Clinics, Opportunities, and Support Groups are
+- News Articles about AIDS
+- Recipes to get nutrition
+- Forums: Questions, Comments, Story
+- Donate Page
+
+*** Questions
+
+1. Internationalization
+2. Could you create your own forum? Yes -- CEO
+3. Extra Features - Medical / Emergency features
+4. User ability to look at conversations they aren't participating in?
+   Group chats included, public discussion in forums.
+   - Can you identify a conversation that has become important?
+5. How do you provide security?
+
+** Team Smiley Face
+
+Emphasizing the isolation from government, social media,
+advertisements.
+
+Chat with a user, chat with other doctors. Connection with doctors -
+based on demographic information. Facts about HIV and AIDS,
+media. Blogs.
