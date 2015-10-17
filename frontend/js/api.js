@@ -111,7 +111,8 @@ plusApi.factory('api', function($q, $http) {
                 });
             },
             register: function(registerInfo) {
-                return postData(path + "/register", registerInfo);
+                return postData(path + "/register", registerInf
+o);
             }
         },
     };
