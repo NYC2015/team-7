@@ -1,7 +1,4 @@
 from django.shortcuts import render
-from django.http import JsonResponse
-from django.contrib.auth.models import User
-from app.models import *
 
 from django.http import JsonResponse
 from forms import ProfileForm
@@ -32,25 +29,34 @@ def add_user(request):
 def index(request):
     return render(request, 'index.html')
 
+def upboat(request):
+    post_id = request.POST['post_id']
+    post = models.Post.objects.get('id' = post_id)[0]
+    post.upvotes += 1
+    post.save()
+    return JsonResponse( {'message' : 'upvoted'} )
+
+def flag(request):
+    post_id = request.POST['post_id']
+    post = models.Post.objects.get('id' = post_id)[0]
+    post.flags += 1
+    post.save()
+
 def userprofile(request):
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance = request.user.profile)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/account/loggedin')
+        else:
+            user = request.user
+            profile = user.profile
+            form = ProfileForm(instance = profile)
 
-		if request.method == 'POST':
-				form = ProfileForm(request.POST, instance = request.user.profile)
-				if form.is_valid():
-						form.save()
-						return HttpResponseRedirect('/account/loggedin')
+            args = {}
+            args.update(csrf(request))
+            args['userForm'] = form
+            args['user'] = request.user
+            return render_to_response('userprofile.html', args)
+                
 
-
-				else:
-
-						user = request.user
-						profile = user.profile
-						form = ProfileForm(instance = profile)
-
-
-				args = {}
-				args.update(csrf(request))
-				args['userForm'] = form
-				args['user'] = request.user
-				return render_to_response('userprofile.html', args)
-				
