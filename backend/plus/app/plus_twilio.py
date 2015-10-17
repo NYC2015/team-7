@@ -1,4 +1,5 @@
 from twilio.rest import TwilioRestClient
+from django.http import JsonResponse
 from models import *
 
 account = "AC175b368d4501eaed8369d53ea9276c96"
@@ -10,7 +11,7 @@ def send_message(request):
     recipient = request.POST['recipient']
     content = request.POST['content']
     message = client.messages.create(to=recipient, from_="+14155992671", body=content)   
-    return "Sent!"
+    return JsonResponse({'message':"Sent!"})
 
 @csrf_exempt
 def receive_message(request):
@@ -21,5 +22,5 @@ def receive_message(request):
     username = model.Users.find(where phone_num = sender)
     content = username + " says:\n" + content
     message = client.messages.create(to=recipient, from_="+14155992671", body=content)
-    return "Sent!"
+    return JsonResponse({'message':"Sent!"})
     
