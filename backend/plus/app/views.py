@@ -8,9 +8,10 @@ from models import *
 
 # Create your views here.
 def posts(request):
-	return JsonResponse( {'posts' : Post.objects.all() })
+    posts = filter(lambda x: x.flags < 5, Post.objects.all())
+    posts = sorted(posts, key=lambda x: x.upvotes, reverse=True)
 
-def add_user(request):
+def get_user(request):
 	username = request.POST['username']
 	phone_number = request.POST['phone_number']
 	password = request.POST['password']
@@ -19,26 +20,34 @@ def add_user(request):
 	if User.objects.filter(username=username).exists():
 		user = User.objects.get(username=username)
 		profile = Profile.objects.get(user=user)
-		return JsonResponse( {'user' : user.username, 'phone_number': profile.current_phone_number} )
+		return JsonResponse({
+								'user' : user.username, 
+								'phone_number': profile.current_phone_number,
+								'disease': profile.diseases
+							})
 	else:
 		new_user = User.objects.create_user(username, password=password)
 		profile = Profile(user=new_user, current_phone_number=phone_number, diseases=disease)
 		profile.save()
-		return JsonResponse( {'message' : 'added user'} )
+		return JsonResponse({
+								'user': new_user.username,
+								'phone_number': profile.current_phone_number,
+								'disease': profile.diseases
+							})
 
 def index(request):
     return render(request, 'index.html')
 
 def upboat(request):
     post_id = request.POST['post_id']
-    post = models.Post.objects.get('id' = post_id)[0]
+    post = models.Post.objects.get(id= post_id)[0]
     post.upvotes += 1
     post.save()
-    return JsonResponse( {'message' : 'upvoted'} )
+    return JsonResponse( {'message' : 'upboated'} )
 
 def flag(request):
     post_id = request.POST['post_id']
-    post = models.Post.objects.get('id' = post_id)[0]
+    post = models.Post.objects.get(id= post_id)[0]
     post.flags += 1
     post.save()
 
