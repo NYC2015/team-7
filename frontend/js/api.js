@@ -83,7 +83,7 @@ plusApi.factory('api', function($q, $http, Session) {
         text: {
             send: function(body, to) {
                 
-            }
+            },
         },
         profile: {
             get: function(username) {
