@@ -1,11 +1,14 @@
 from django.shortcuts import render
+from django.http import JsonResponse
+from django.contrib.auth.models import User
+from app.models import *
 
 # Create your views here.
-<<<<<<< HEAD
-
-def index(request):
-    return render(request, 'index.html')
-=======
-def post(request):
+def posts(request):
 	return JsonResponse( {'posts' : Post.objects.all() })
->>>>>>> 851b027cd2db45568ad362d8b792fcfc864a8e15
+
+def add_user(request):
+	return JsonResponse( {'body': request.body} )
+	# username = request.GET['username']
+	# phone_number = request.GET['phone_number']
+	# password = request.GET
