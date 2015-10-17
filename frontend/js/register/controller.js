@@ -9,6 +9,8 @@ registerCtrls.controller('registerCtrl', function($scope, api) {
             password: $scope.password,
             'phone_number': $scope.number,
             disease: $scope.status,
+        }).then(function() {
+            
         })
     }
 });
