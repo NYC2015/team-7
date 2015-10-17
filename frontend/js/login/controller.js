@@ -3,5 +3,13 @@
 var loginCtrls = angular.module('plus.login', []);
 
 loginCtrls.controller('loginCtrl', function($scope) {
-    console.log("login")
+    $scope.login = function() {
+        if ($scope.username == "" || $scope.username === undefined) {
+            return;
+        }
+        
+        if ($scope.password == "" || $scope.password === undefined) {
+            return;
+        }
+    }
 });
