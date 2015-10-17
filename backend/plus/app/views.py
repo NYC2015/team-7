@@ -113,3 +113,15 @@ def flag(request):
     post.flags += 1
     post.save()
     return JsonResponse({'message' : 'flagged'})
+
+def update_anonymity(request):
+	user = User.objects.get(username=request.POST['username'])
+	profile = Profile.objects.get(user=user)
+	profile.is_anonymous = !profile.is_anonymous
+	profile.save()
+	return JsonResponse({
+			'username': user.username,
+			'is_anonymous': profile.is_anonymous
+		})
+
+
