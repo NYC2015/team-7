@@ -35,7 +35,7 @@ var chatApp = angular.module('plus.chat', [
     'firebase',
 ]);
 
-chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Session) {
+chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Session, communityService) {
     var ref = new Firebase('https://plusapp.firebaseio.com');
 
     console.log(Session);
@@ -139,25 +139,34 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
         var obj = {
             name: "",
             messages: [],
-            isNew: false,
-        }
+            isNew: false
+        };
 
         $scope.selected = obj;
+    };
+
+    if(!!communityService.referChat) {
+        $scope.selected = {
+            name: communityService.referChat.name,
+            messages: [],
+            isNew: false
+        };
+        communityService.referChat.name = null;
     }
 
     $scope.fake = {
         name: "Hunter Leath",
         alias: "hunter@hunter",
         messages: [],
-        isNew: false,
-    }
+        isNew: false
+    };
 
     $scope.selectConversation = function(obj) {
         $scope.selected = obj;
         $timeout(function() {
             msgDiv.scrollTop = msgDiv.scrollHeight;
         }, 0);
-    }
+    };
 
     $scope.send = function() {
         var sendingDate = (new Date()).toISOString();

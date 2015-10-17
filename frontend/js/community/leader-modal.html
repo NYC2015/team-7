@@ -7,7 +7,8 @@
 <ul ng-repeat="leader in leaders">
   <li class="leader plus-spread">
     <h5 style="display: inline-block;">{{visibleName(leader)}}</h5>
-    <div class="mdl-button mdl-button--raised mdl-button--primary">
+    <div class="mdl-button mdl-button--raised mdl-button--primary"
+         ng-click="startChat(leader)">
       Chat now
     </div>
   </li>

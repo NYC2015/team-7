@@ -32,11 +32,16 @@ plusCommunity.controller('communityCtrl',
             };
         })
     .controller('LeaderCtrl',
-        function($scope, Session, profileService, leaders) {
+                function($scope, $rootScope, Session, profileService, communityService, $state, leaders) {
             $scope.leaders = _.filter(leaders, function(leader) {
-                return leader.id === Session.user.id;
+                return leader.id !== Session.user.id;
             });
             $scope.visibleName = function(leader) {
                 return profileService.visibleName(Session.user, leader);
+            };
+            $scope.startChat = function(leader) {
+                communityService.referChat = leader;
+                $scope.$close();
+                $state.go('chat');
             };
         });
