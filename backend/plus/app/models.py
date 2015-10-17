@@ -36,6 +36,6 @@ class Post(models.Model):
 
 class Comment(models.Model):
     content = models.TextField()
-    post = models.ForeignKey(Post)
+    post = models.ForeignKey(Post, default = 0)
     # extra time upvotes
     author = models.ForeignKey(Profile)

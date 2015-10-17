@@ -28,23 +28,22 @@ def posts(request):
 
 # Make a post
 def post(request):
-    content = request.POST['content'] 
-    author_id = request.POST['author']
-    author = Profile.objects.get(id=author_id)
-    title = request.POST['title'] 
-    date_created = datetime.date.today()
-    p = Post(author=author,
-             content=content,
-             title=title,
-             date_created=date_created)
-    p.save()
-
-    return JsonResponse({'post_id':p.id})
+   content = request.POST['content'] 
+   author_id = request.POST['author']
+   author = Profile.objects.get(id=author_id)
+   title = request.POST['title'] 
+   date_created = datetime.date.today()
+   p = Post(author=author,
+            content=content,
+            title=title,
+            date_created=date_created)
+   p.save()
+   return JsonResponse({'post_id':p.id})
 
 def leaders(request):
-    users = Profile.objects.all()
-    leaders = sorted(Profile.objects.all(), key=lambda x: x.reputation, reverse=True)[-30:]
-    return JsonResponse({'leaders':leaders})
+   users = Profile.objects.all()
+   leaders = sorted(Profile.objects.all(), key=lambda x: x.reputation)[:30]
+   return JsonResponse({'leaders':leaders})
 
 # Make a comment
 def comment(request):
@@ -91,24 +90,24 @@ def login(request):
     else:
         return JsonResponse({ 'message': 'Incorrect username or password' })
 
-    def index(request):
-        return render(request, 'index.html')
+def index(request):
+    return render(request, 'index.html')
 
-    def upboat(request):
-        post_id = request.POST['post_id']
-        post = Post.objects.get(id= post_id)
-        post.upvotes += 1
-        post.save()
+def upboat(request):
+    post_id = request.POST['post_id']
+    post = Post.objects.get(id= post_id)
+    post.upvotes += 1
+    post.save()
 
-        author = post.author
-        author.reputation += 1
-        author.save()
-    
-        return JsonResponse( {'message' : 'upboated'} )
+    author = post.author
+    author.reputation += 1
+    author.save()
 
-    def flag(request):
-        post_id = request.POST['post_id']
-        post = Post.objects.get(id= post_id)
-        post.flags += 1
-        post.save()
-        return JsonResponse({'message' : 'flagged'})
+    return JsonResponse( {'message' : 'upboated'} )
+
+def flag(request):
+    post_id = request.POST['post_id']
+    post = Post.objects.get(id= post_id)
+    post.flags += 1
+    post.save()
+    return JsonResponse({'message' : 'flagged'})
