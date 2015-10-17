@@ -1,12 +1,15 @@
 <ul class="feed">
   <li class="post" ng-repeat="post in community.list track by $index">
     <div class="post-inner">
-      <div class="post-title">
-        {{post.title}}
+      <div class="plus-spread pull-left">
+        <i ng-click="upvote(post)"class="material-icons action">arrow_drop_up</i>
+        <div class="post-title"> {{post.title}} </div>
       </div>
-      <div class="post-score">{{post.votes}}</div>
-      <div class="post-author">
-        {{post.author.name}}
+      <div class="plus-spread">
+        <span >
+          <span class="post-score">{{post.votes}}</span>
+          <span class="post-comments">{{post.comments.length + " comments"}}</span>
+        </span>
       </div>
     </div>
   </li>

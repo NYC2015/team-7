@@ -21,5 +21,11 @@ angular.module('plus.community').service('communityService',
             });
         };
 
+        service.upvote = function(post) {
+            api.community.upvote(post).then(function(res) {
+                console.log(post.id);
+            });
+        };
+
         return service;
     });
