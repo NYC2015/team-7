@@ -17,12 +17,21 @@ var fakeAPICall = function(response, args) {
 var conversation = {
     id: 10,
     participants: [{
+        id: 10,
         name: "Hunter Leath",
         picture: "/img",
     }, {
+        id: 6,
         name: "Brent Baumgartner",
         picture: "/img/2",
-    }]
+    }],
+    messages: [
+        {
+            from: 10,
+            time: "5 seconds ago",
+            body: "Hello, world",
+        }
+    ]
 }
 
 
