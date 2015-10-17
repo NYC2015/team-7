@@ -32,5 +32,7 @@ urlpatterns = [
     url(r'^leaders', leaders),
     url(r'^register', register),
     url(r'^profile', profile),
-    url(r'^update_anonymity', update_anonymity)
+    url(r'^update_anonymity', update_anonymity),
+    url(r'^update_diseases', update_diseases),
+    url(r'^update_reveal_to_others', update_reveal_to_others)
    ]

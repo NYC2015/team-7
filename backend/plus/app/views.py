@@ -128,3 +128,27 @@ def update_anonymity(request):
 			'username': user.username,
 			'is_anonymous': profile.is_anonymous,
 		})
+
+def update_diseases(request):
+	username = request.POST['username']
+	diseases = int(request.POST['diseases'])
+	user = User.objects.get(username=username)
+	profile = Profile.objects.get(user=user)
+	profile.diseases = diseases
+	profile.save()
+	return JsonResponse({
+			'username': user.username,
+			'diseases': profile.diseases,
+		})
+
+def update_reveal_to_others(request):
+	username = request.POST['username']
+	reveal_to_others = request.POST['reveal_to_others'].lower() == 'true'
+	user = User.objects.get(username=username)
+	profile = Profile.objects.get(user=user)
+	profile.reveal_to_others = reveal_to_others
+	profile.save()
+	return JsonResponse({
+			'username': user.username,
+			'reveal_to_others': profile.reveal_to_others,
+		})
