@@ -30,16 +30,18 @@ angular.module('plus.community').service('communityService',
             });
         };
 
-        service.upvote = function(post) {
+        service.upvote = function(post, $event) {
             api.community.upvote(post.id).then(function(res) {
-                if(!post.upvotes)
+                if (!post.upvotes)
                     post.upvotes = 0;
                 post.upvotes++;
             });
+            $event.stopImmediatePropagation();
         };
 
-        service.flag = function(post) {
+        service.flag = function(post, $event) {
             api.community.flag(post.id);
+            $event.stopImmediatePropagation();
         };
 
         service.sendComment = function(post, text) {
@@ -64,6 +66,23 @@ angular.module('plus.community').service('communityService',
                         return post;
                     }
                 }
+            });
+        };
+
+        service.showLeaders = function() {
+            api.users.leaders().then(function(res) {
+                var leaders = _.filter(res.data.leaders, function(leader) {
+                    return true;
+                });
+                var modalInstance = $uibModal.open({
+                    templateUrl: 'js/community/leader-modal.html',
+                    controller: 'LeaderCtrl',
+                    resolve: {
+                        leaders: function() {
+                            return leaders;
+                        }
+                    }
+                });
             });
         };
 

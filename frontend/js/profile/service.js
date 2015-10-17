@@ -12,7 +12,9 @@ profileService.service('profileService', function() {
             return viewed.name;
         if(viewed['reveal_to_others'] && viewer.diseases === viewed.diseases)
             return viewed.name;
-        return viewed.pseudonym;
+        if(viewed.pseudonym !== "")
+            return viewed.pseudonym;
+        return "Anonymous";
     };
 
     return service;

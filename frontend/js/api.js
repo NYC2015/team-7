@@ -135,8 +135,9 @@ plusApi.factory('api', function($q, $http, Session) {
             }
         },
         users: {
-            current: fakeAPICall(profile),
-            leaders: fakeAPICall([profile, profile])
+            leaders: function() {
+                return $http.get(path + "/leaders");
+            }
         }
     };
 });

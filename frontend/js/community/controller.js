@@ -12,7 +12,7 @@ plusCommunity.controller('communityCtrl',
                 return profileService.visibleName(Session.user, author);
             };
             $scope.Session = Session;
-
+            $scope.showLeaders = communityService.showLeaders;
             $scope.postStory = communityService.postStory;
             $scope.viewComments = communityService.viewComments;
         })
@@ -29,5 +29,14 @@ plusCommunity.controller('communityCtrl',
             $scope.post = {
                 content: "",
                 title: ""
+            };
+        })
+    .controller('LeaderCtrl',
+        function($scope, Session, profileService, leaders) {
+            $scope.leaders = _.filter(leaders, function(leader) {
+                return leader.id === Session.user.id;
+            });
+            $scope.visibleName = function(leader) {
+                return profileService.visibleName(Session.user, leader);
             };
         });

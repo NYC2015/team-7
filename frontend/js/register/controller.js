@@ -2,15 +2,15 @@
 
 var registerCtrls = angular.module('plus.registration', ['plus.api']);
 
-registerCtrls.controller('registerCtrl', function($scope, api) {
+registerCtrls.controller('registerCtrl', function($scope, api, $state) {
     $scope.register = function() {
         api.login.register({
             username: $scope.username,
             password: $scope.password,
             'phone_number': $scope.number,
-            disease: $scope.status,
+            disease: $scope.status
         }).then(function() {
-            console.log("succesfully registered")
-        })
-    }
+            $state.go('login');
+        });
+    };
 });

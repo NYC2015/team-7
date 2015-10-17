@@ -1,17 +1,24 @@
-
+<div class="plus-spread">
+  <h4 class="display: inline-block">Community Board</h4>
+  <a class="mdl-button mdl-button--primary mdl-button--raised"
+     ng-show="!!Session.user.id" ng-click="showLeaders()">
+    Chat with Community Leaders
+  </a>
+</div>
+<hr />
 <ul class="feed">
   <li class="post" ng-repeat="post in community.list track by $index">
-    <div class="post-inner">
+    <div class="post-inner" ng-click="viewComments(post)">
       <div class="plus-spread">
         <div class="plus-spread pull-left">
-          <i ng-click="upvote(post)"class="material-icons action">arrow_drop_up</i>
+          <i ng-click="upvote(post, $event)"class="material-icons action">arrow_drop_up</i>
           <div class="post-title"> {{post.title}} </div>
           <div class="post-author"> {{visibleName(post.author)}} </div>
         </div>
         <span class="plus-spread">
           <span class="post-comments action"
-                ng-click="viewComments(post)">{{post.comments.length + " comments"}}</span>
-          <i ng-click="flag(post)" class="material-icons action flag">flag</i>
+                ng-click="viewComments(post, $event)">{{post.comments.length + " comments"}}</span>
+          <i ng-click="flag(post, $event)" class="material-icons action flag">flag</i>
         </span>
       </div>
     </div>
