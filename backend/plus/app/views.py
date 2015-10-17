@@ -111,24 +111,23 @@ def flag(request):
     post.save()
     return JsonResponse({'message' : 'flagged'})
 
-# def profile(request):
-# 	username = request.POST['username']
-# 	user = User.objects.get(username=username)
-# 	profile = obj_to_dict(Profile.objects.get(user=user))
-# 	return JsonResponse({
-# 			'profile': profile
-# 		})
+def profile(request):
+	username = request.POST['username']
+	user = User.objects.get(username=username)
+	profile = Profile.objects.get(user=user)
+	return JsonResponse({
+			'profile': obj_to_dict(profile)
+		})
 
-
-# def update_profile(request):
-# 	field = request.POST['field']
-# 	value = request.POST['value']
+# def update_anonymity(request):
 # 	username = request.POST['username']
 # 	user = User.objects.get(username=username)
 # 	profile = Profile.objects.get(user=user)
-# 	setattr(profile, field, bool(value))
+# 	profile.is_anonymous = profile.is_anonymous
 # 	profile.save()
 # 	return JsonResponse({
 # 			'username': user.username,
-# 			field: getattr(profile, field)
+# 			'is_anonymous': profile.is_anonymous
 # 		})
+
+
