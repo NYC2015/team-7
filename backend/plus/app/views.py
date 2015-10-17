@@ -12,6 +12,8 @@ import datetime
 def posts(request):
     posts = filter(lambda x: x.flags < 5, Post.objects.all())
     posts = sorted(posts, key=lambda x: x.upvotes, reverse=True)
+    for post in posts:
+        post.date_created = json.dump(instance.date_produced.strftime('%Y-%m-%dT%H:%M:%S'))
     return JsonResponse({'posts':posts})
 
 # Make a post
@@ -38,8 +40,9 @@ def leaders(request):
 def comment(request):
    content = request.POST['content']
    author_id = request.POST['author']
+   post_id = request.POST['post_id']
    author = Profile.objects.get(id=author_id)
-   c = Comment(author=author, content=content)
+   c = Comment(author=author, content=content, post=post_id)
    c.save()
 
    author.reputation += 1
