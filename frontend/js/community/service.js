@@ -21,15 +21,16 @@ angular.module('plus.community').service('communityService',
                 controller: 'StoryCreateCtrl'
             });
             modalInstance.result.then(function(story) {
+                story.author = "me";
                 //content author title
-                api.commmunity.postStory().then(function(res) {
+                api.community.postStory(story).then(function(res) {
                     console.log(res);
                 });
             });
         };
 
         service.upvote = function(post) {
-            api.community.upvote(post).then(function(res) {
+            api.community.upvote(post.id).then(function(res) {
                 console.log(post.id);
             });
         };
