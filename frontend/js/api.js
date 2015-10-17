@@ -78,7 +78,7 @@ plusApi.factory('api', function($q, $http) {
                 ["postId", "message"]
             ),
             upvote: function() {
-                return $http.post(path + "/upvote");
+                return $http.post(path + "/upboat");
             },
             postStory: fakeAPICall(
                 ["title", "body"]
