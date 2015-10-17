@@ -8,7 +8,7 @@ plusLearnControllers.controller('learnCtrl', function($scope, api) {
     });
 });
 
-var qa = [{title: "What is HIV?", 
+/*var qa = [{title: "What is HIV?", 
 	description: 'HIV is short for "human inmmunodeficiency virus."'},
 	{title: "How do you get HIV?",
 	description: ["Sexual contact that involves semen, vaginal fluids or blood.",
@@ -33,4 +33,4 @@ var qa = [{title: "What is HIV?",
 	description: "Viral load tests detect pieces of HIV genetic material. They show up before the immune system manufactures antibodies. In 2010 the FDA approved a new blood test that detects both antibodies to HIV and HIV antigens (pieces of the virus). This 'fourth generation' test can detect HIV infection sooner than antibody tests alone."},
 	{title: "What Does It Mean if I Test Positive?",
 	description: "A positive test result means that you have HIV antibodies, and are infected with HIV. Testing positive does not mean that you have AIDS. Many people who test positive stay healthy for several years, even if they don't start taking medication right away. If you test negative six months after you think you were exposed to HIV and if there is no chance you were exposed to HIV since then, you are not infected with HIV."}
-	]
+	]*/
