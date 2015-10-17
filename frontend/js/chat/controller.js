@@ -39,7 +39,7 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
     var ref = new Firebase('https://plusapp.firebaseio.com');
 
     console.log(Session);
-    var user = Session.user.user;
+    var user = Session.user.id;
     if (user == null) {
         // probably dev box
         user = "hunter@hunter";
