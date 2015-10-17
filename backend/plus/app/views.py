@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
 from django.http import JsonResponse
-from forms import ProfileForm
 from django.core.context_processors import csrf
 from django.core import serializers
 from django.contrib.auth import authenticate, login as django_login
@@ -9,7 +8,6 @@ from django.http import HttpResponseRedirect
 import json
 from models import *
 import datetime
-
 
 from django.core import serializers
 
