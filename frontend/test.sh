@@ -5,5 +5,5 @@ for (( ;; ))
         git commit -m "updates"
         git pull
         git push
-        sleep 1
+        # sleep 1
     done
