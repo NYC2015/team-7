@@ -66,6 +66,7 @@ def login(request):
 		profile = Profile.objects.get(user=user)
 		return JsonResponse({
 				'user' : user.username,
+				'user_id': user.id,
 				'phone_number': profile.current_phone_number,
 				'disease': profile.diseases
 			})
