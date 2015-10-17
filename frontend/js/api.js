@@ -59,7 +59,7 @@ plusApi.factory('api', function($q, $http) {
         };
     };
 
-    var path = "localhost:8000";
+    var path = "http://localhost:8000";
 
     return {
         profile: {
@@ -87,6 +87,17 @@ plusApi.factory('api', function($q, $http) {
         },
         learn: {
             all: fakeAPICall([resource, resource])
-        }
+        },
+        login: {
+            login: function(username, password) {
+                return $http.post(path + "/login", {
+                    username: username,
+                    password: password,
+                })
+            },
+            register: function(registerInfo) {
+                
+            }
+        },
     };
 });
