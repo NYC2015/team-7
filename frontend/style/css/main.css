@@ -96,8 +96,8 @@
   color: #178D00; }
 .chat .conversation .messages {
   position: absolute;
-  top: 49px;
-  bottom: 56px;
+  top: 62px;
+  bottom: 40px;
   left: 5px;
   right: 5px;
   overflow: auto; }
@@ -127,7 +127,7 @@
   background-color: #d6d6d6; }
 .chat input {
   width: 100%;
-  font-size: 18px; }
+  font-size: 16px; }
 .chat input.to {
   width: 400px;
   font-size: 30px;

@@ -190,9 +190,7 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
             $scope.selected.messages.unshift({
                 sender: true,
                 timestamp: sendingDate,
-                message: {
-                    string: $scope.newMessage,
-                },
+                message: $scope.newMessage,
             });
 
             $timeout(function() {
