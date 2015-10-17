@@ -18,13 +18,14 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 from app.views import *
+from app.plus_twlio import *
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^posts$', posts),
     url(r'^login', login),
-    url(r'^send', 'plus_twilio.send'),
-    url(r'^receive', 'plus_twilio.receive'),
+    url(r'^send', send),
+    url(r'^receive', receive),
     url(r'^upboat', upboat),
     url(r'^flag', flag),
     url(r'^post', post),
