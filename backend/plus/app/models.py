@@ -27,12 +27,11 @@ class Message(models.Model):
 class Post(models.Model):
 	# community = models.ForeignKey(Community)
 	poster = models.ForeignKey(User)
-	upvotes = models.IntegerField(max_length = 5)
+	upvotes = models.IntegerField(max_length = 5, default = 0)
 	flags = models.IntegerField(max_length = 5) # downvotes
 	title = models.TextField()
 	content = models.TextField()
 	date_created = models.DateField()
-	upVotes = models.IntegerField(default = 0)
 
 	def upVote(self):
 		self.upVotes += 1
