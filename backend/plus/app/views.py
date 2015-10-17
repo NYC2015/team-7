@@ -40,7 +40,7 @@ def post(request):
    return JsonResponse({'post_id':p.id})
 
 def leaders(request):
-   leaders = Profile.objects.all().order_by('reputation')
+   leaders = map(obj_to_dict, Profile.objects.all().order_by('reputation'))
    return JsonResponse( {'leaders' : leaders[:30]} )
 
 # Make a comment
