@@ -4,11 +4,15 @@
       <div class="plus-spread">
         <div class="plus-spread pull-left">
           <i ng-click="upvote(post)"class="material-icons action">arrow_drop_up</i>
-          <span class="post-score">{{post.upvotes}}</span>
+          <div class="post-score">{{post.upvotes}}</div>
           <div class="post-title"> {{post.title}} </div>
+          <div class="post-title"> {{visibleName(post.author)}} </div>
         </div>
-        <span class="post-comments action"
-              ng-click="viewComments(post)">{{post.comments.length + " comments"}}</span>
+        <span class="plus-spread">
+          <span class="post-comments action"
+                ng-click="viewComments(post)">{{post.comments.length + " comments"}}</span>
+          <i ng-click="flag(post)" class="material-icons action flag">flag</i>
+        </span>
       </div>
     </div>
   </li>

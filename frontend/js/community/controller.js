@@ -3,15 +3,13 @@
 var plusCommunity = angular.module('plus.community', ['plus.api']);
 
 plusCommunity.controller('communityCtrl',
-        function($scope, communityService) {
+        function($scope, communityService, Session, profileService) {
             $scope.community = communityService.exports;
-            communityService.ready.promise.then(function() {
-                console.log(communityService.exports);
-            });
 
-            $scope.upvote = function(post) {
-                console.log(post);
-                communityService.upvote(post);
+            $scope.upvote = communityService.upvote;
+            $scope.flag = communityService.upvote;
+            $scope.visibleName = function(author) {
+                return profileService.visibleName(Session.user, author);
             };
 
             $scope.postStory = communityService.postStory;

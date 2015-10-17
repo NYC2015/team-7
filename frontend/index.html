@@ -24,7 +24,8 @@
           <!-- Title -->
           <span class="mdl-layout-title">Plus!</span>
           <div class="mdl-layout-spacer"></div>
-          <span class="mdl-layout-title">
+          <span class="mdl-layout-title"
+                ng-if="!Session.user.id">
             <a class="mdl-button"
                   href="#/login">
               Log in
@@ -68,6 +69,7 @@
     <script src="js/chat/controller.js"></script> 
     <script src="js/learn/controller.js"></script> 
     <script src="js/profile/controller.js"></script> 
+    <script src="js/profile/service.js"></script> 
     <script src="js/vendor/ui-bootstrap-custom-tpls-0.14.2.min.js"></script> 
     <script src="js/login/controller.js"></script> 
     <script src="js/register/controller.js"></script> 
