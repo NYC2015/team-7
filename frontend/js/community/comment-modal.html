@@ -18,7 +18,8 @@
     </div>
   </div>
 
-  <div class="plus-spread full-width">
+  <div class="plus-spread full-width "
+        ng-if="!!Session.user.id">
     <textarea ng-model="commentText"></textarea>
     <a class="mdl-button mdl-button--primary"
        ng-click="submit(commentText)">Send</a>

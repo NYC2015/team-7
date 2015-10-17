@@ -17,9 +17,10 @@ plusCommunity.controller('communityCtrl',
             $scope.viewComments = communityService.viewComments;
         })
     .controller('CommentCtrl',
-        function($scope, communityService, post) {
+        function($scope, communityService, post, Session) {
             $scope.post = post;
             $scope.commentText = "";
+            $scope.Session = Session;
             $scope.submit = function() {
                 communityService.sendComment(post, $scope.commentText);
             };
