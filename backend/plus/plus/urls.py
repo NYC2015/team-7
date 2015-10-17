@@ -21,14 +21,10 @@ from app.views import *
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-<<<<<<< HEAD
     url(r'^profile/$', 'views.userprofile'),
-    url(r'^post', post)
-]
-=======
+    url(r'^post', post),
     url(r'^posts', post),
     # url(r'^profile/user', )
     # url(r'', )
 ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
 
->>>>>>> 5b0c3fcc273514c1d18b195c0fd7114947b4b876
