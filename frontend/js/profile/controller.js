@@ -9,6 +9,10 @@ plusProfileControllers.controller('profileCtrl', function($scope, api) {
         positive: "HIV Postivie",
         aids: "AIDS",
     };
+
+    $scope.privacy = {
+        
+    }
     
     api.profile.current().then(function(profile) {
         $scope.profile = profile;
