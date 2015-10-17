@@ -35,19 +35,28 @@ var profile = {
         none: true,
         hiv: true,
         aids: false,
-    }
+    },
+    status: "hiv"
 }
 
 var post = {
     title: "free screenings + counseling at 123 roadd",
     body: "so there i was at the gorcery store",
     poster: profile,
+    votes: 50,
     comments: [comment, comment, comment]
 }
 
 var comment = {
     body: "blah blah blah, comment",
     poster: profile
+}
+
+var resource = {
+    title: "hello, world",
+    body: "howdy",
+    locality: 2,
+    from: "doctor kwon"
 }
 
 plsApi.factory('api', function($q) {
@@ -73,7 +82,10 @@ plsApi.factory('api', function($q) {
                 true,
                 ["title", "body"]
             ),
-            all: fakeAIPCall([post, post])
+            all: fakeAPICall([post, post])
+        },
+        learn: {
+            all: fakeAPICall([resource, resource])
         }
     }
 })
