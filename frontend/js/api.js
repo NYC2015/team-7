@@ -2,26 +2,36 @@
 
 var plusApi = angular.module('plus.api');
 
-plsApi.factory('plusAPI', function() {
+var fakeAPICall = function(response, args) {
+    return function() {
+        var defer = $q.defer();
+
+        setTimeout(function() {
+            defer.resolve(response);
+        }, 15);
+
+        return defer.promise;
+    }
+}
+
+plsApi.factory('plusAPI', function($q) {
     return {
         profile: {
-            current: function() {
-                return {
-                    name: "Hunter Leath",
-                    picture: "http://google.com",
-                    privacy: {
-                        none: true,
-                        hiv: true,
-                        aids: false,
-                    }
+            current: fakeAPICall({
+                name: "Hunter Leath",
+                picture: "http://google.com",
+                privacy: {
+                    none: true,
+                    hiv: true,
+                    aids: false,
                 }
-            }
+            })
         },
         chat: {
-            sendMessage: function(conversationId, message) {
-                // TODO: Replace with a promise.
-                return true;
-            }
+            sendMessage: fakeAPICall(
+                true,
+                ["conversationId", "message"]
+            )
         }
     }
 })
