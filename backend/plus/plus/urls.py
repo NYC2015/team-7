@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^get_user', get_user),
     url(r'^send', 'plus_twilio.send'),
     url(r'^receive', 'plus_twilio.receive'),
+    url(r'^update_password', update_password),
     url(r'^upboat', upboat),
     url(r'^flag', flag),
     # url(r'^$', 'django.contrib.staticfiles.views.serve', kwargs = {'path' : 'index.html', 'document_root' : settings.STATIC_ROOT}),
