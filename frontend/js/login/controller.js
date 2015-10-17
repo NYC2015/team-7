@@ -3,5 +3,5 @@
 var loginCtrls = angular.module('plus.login', []);
 
 loginCtrls.controller('loginCtrl', function($scope) {
-    console.log("login")
+    $scope
 });
