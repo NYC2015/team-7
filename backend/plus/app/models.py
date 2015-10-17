@@ -28,7 +28,7 @@ class Message(models.Model):
 class Post(models.Model):
 	author = models.ForeignKey(Profile, default = 0)
 	upvotes = models.IntegerField(default = 0)
-	flags = models.IntegerField(default = 0) # downvotes
+	flags = models.IntegerField(default = 0)
 	title = models.TextField()
 	content = models.TextField()
 	date_created = models.DateField()
@@ -41,8 +41,3 @@ class Comment(models.Model):
     content = models.TextField()
     # extra time upvotes
     author = models.ForeignKey(Profile)
-		
-User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
-# class Community(models.Model):
-# 	pass
-
