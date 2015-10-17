@@ -87,6 +87,17 @@ plusApi.factory('api', function($q, $http) {
         },
         learn: {
             all: fakeAPICall([resource, resource])
-        }
+        },
+        login: {
+            login: function(username, password) {
+                return $http.post(path + "/login", {
+                    username: username,
+                    password: password,
+                })
+            },
+            register: function(registerInfo) {
+                
+            }
+        },
     };
 });
