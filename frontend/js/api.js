@@ -14,7 +14,20 @@ var fakeAPICall = function(response, args) {
     }
 }
 
-plsApi.factory('plusAPI', function($q) {
+var conversation = {
+    id: 10,
+    participants: [{
+        name: "Hunter Leath",
+        picture: "/img",
+    }, {
+        name: "Brent Baumgartner",
+        picture: "/img/2",
+    }]
+}
+
+
+
+plsApi.factory('api', function($q) {
     return {
         profile: {
             current: fakeAPICall({
@@ -31,7 +44,10 @@ plsApi.factory('plusAPI', function($q) {
             sendMessage: fakeAPICall(
                 true,
                 ["conversationId", "message"]
-            )
+            ),
+            all: fakeAPICall({
+                
+            }, [])
         }
     }
 })
