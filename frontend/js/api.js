@@ -25,6 +25,11 @@ var profile = {
     status: "hiv"
 };
 
+var comment = {
+    body: "blah blah blah, comment",
+    author: profile
+};
+
 var post = {
     title: "free screenings + counseling at 123 roadd",
     body: "so there i was at the gorcery store",
@@ -32,11 +37,6 @@ var post = {
     votes: 50,
     id: 'post',
     comments: [comment, comment, comment]
-};
-
-var comment = {
-    body: "blah blah blah, comment",
-    author: profile
 };
 
 var resource = {
