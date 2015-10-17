@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('plus.header', [])
-    .controller('headerCtrl', function($scope, $state) {
+    .controller('headerCtrl', function($scope, $state, Session) {
         function setHeader() {
-            console.log($state.current.name);
             $scope.stateName = $state.current.name;
         }
 
+        $scope.Session = Session;
         $scope.$on("$stateChangeSuccess", setHeader);
     });

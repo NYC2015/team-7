@@ -34,7 +34,7 @@ var post = {
     title: "free screenings + counseling at 123 roadd",
     body: "so there i was at the gorcery store",
     author: profile,
-    votes: 50,
+    upvotes: 50,
     id: 1,
     comments: [comment, comment, comment]
 };
@@ -96,6 +96,11 @@ plusApi.factory('api', function($q, $http, Session) {
                     "post_id": postId
                 });
             },
+            flag: function(postId) {
+                return postData(path + "/flag", {
+                    "post_id": postId
+                });
+            },
             postComment: function(postId, commentText) {
                 console.log(postId, commentText);
                 return postData(path + "/comment", {
@@ -128,6 +133,10 @@ plusApi.factory('api', function($q, $http, Session) {
             register: function(registerInfo) {
                 return postData(path + "/register", registerInfo);
             }
+        },
+        users: {
+            current: fakeAPICall(profile),
+            leaders: fakeAPICall([profile, profile])
         }
     };
 });
