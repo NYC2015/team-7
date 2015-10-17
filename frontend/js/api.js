@@ -59,7 +59,7 @@ plusApi.factory('api', function($q, $http) {
         };
     };
 
-    var path = "localhost:8000";
+    var path = "http://localhost:8000";
 
     return {
         profile: {
