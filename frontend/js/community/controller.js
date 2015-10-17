@@ -1,12 +1,13 @@
 'use strict';
 
-var plusCommunityControllers = angular.module('plus.community', ['plus.api']);
+var plusCommunity = angular.module('plus.community', ['plus.api']);
 
-plusCommunityControllers.controller('communityCtrl', function($scope, communityService) {
-    $scope.community = communityService.exports;
-    communityService.ready.promise.then(function() {
-        // do setup;
+plusCommunity.controller('communityCtrl',
+    function($scope, communityService) {
+        $scope.community = communityService.exports;
+        communityService.ready.promise.then(function() {
+            console.log(communityService.exports);
+        });
+
+        $scope.postStory = communityService.postStory;
     });
-
-    $scope.postStory = communityService.postStory;
-});

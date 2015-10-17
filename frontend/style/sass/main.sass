@@ -1,0 +1,61 @@
+
+@import 'profile'
+
+.mdl-layout__header-row, .mdl-layout__tab-bar-container, .mdl-layout__tab-bar
+  height: 44px
+  overflow: visible
+
+.mdl-layout__tab-bar-container
+  height: 43px
+
+.mdl-layout__tab
+  height: 42px
+  line-height: 42px
+  &:focus
+    outline: none
+
+  &:hover
+    color: white
+
+  &.is-active
+    border-bottom: 3px solid white
+    color: white
+
+.main-action-button
+  bottom: 2em
+  right: 4em
+  position: absolute
+
+.plus-spread
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.mdl-layout
+  position: absolute
+  left: 0
+  right: 0
+  bottom: 0
+  top: 0
+
+.mdl-layout__container
+  height: 100%
+  position: absolute
+  width: 100%
+  
+.mdl-layout__content
+  background: #f9f9f9
+  transition: 200ms ease-in-out
+  transform: translateX(0px)
+  display: flex
+  flex-direction: row
+  justify-content: center
+  
+.page-content
+  flex-grow: 1
+  width: 100%
+  max-width: 1060px
+  &::-webkit-scrollbar 
+    display: none
+  z-index: 1
+  background: #f9f9f9

@@ -28,14 +28,14 @@ var profile = {
 var post = {
     title: "free screenings + counseling at 123 roadd",
     body: "so there i was at the gorcery store",
-    poster: profile,
+    author: profile,
     votes: 50,
     comments: [comment, comment, comment]
 };
 
 var comment = {
     body: "blah blah blah, comment",
-    poster: profile
+    author: profile
 };
 
 var resource = {
@@ -64,20 +64,20 @@ plusApi.factory('api', function($q) {
         },
         chat: {
             sendMessage: fakeAPICall(
-                true, ["conversationId", "message"]
+                ["conversationId", "message"]
             ),
             all: fakeAPICall(
-                true, [conversation, conversation]
+                [conversation, conversation]
             )
         },
         community: {
             postComment: fakeAPICall(
-                true, ["postId", "message"]
+                ["postId", "message"]
             ),
             postStory: fakeAPICall(
-                true, ["title", "body"]
+                ["title", "body"]
             ),
-            all: fakeAPICall([post, post])
+            all: fakeAPICall({list: [post, post]})
         },
         learn: {
             all: fakeAPICall([resource, resource])
