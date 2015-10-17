@@ -17,12 +17,12 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-from app.views import posts, add_user, upboat, flag
+from app.views import *
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^posts$', posts),
-    url(r'^add_user', add_user),
+    url(r'^get_user', get_user),
     url(r'^send', 'plus_twilio.send'),
     url(r'^receive', 'plus_twilio.receive'),
     url(r'^upboat', upboat),
