@@ -4,14 +4,13 @@ from django.http import JsonResponse
 from forms import ProfileForm
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
-from django.db import IntegrityError
 from models import *
 
 # Create your views here.
 def posts(request):
-    posts = filter(lambda x: x.flags < 5, Post.objects.all())
+    posts = filter(lambda x: x.flags > 5, Post.objects.all())
     posts = sorted(posts, key=lambda x: x.upvotes, reverse=True)
-    return JsonResponse( {'posts' : posts })
+    return JsonResponse({'posts':posts})
 
 def get_user(request):
 	username = request.POST['username']
@@ -37,14 +36,8 @@ def get_user(request):
 								'disease': profile.diseases
 							})
 
-def update_password(request):
-	user = User.objects.get(username=request.POST['username'])
-	user.set_password(request.POST['new_password'])
-	try:
-		user.save()
-		return JsonResponse({ 'message': 'success' })
-	except IntegrityError:
-		return JsonResponse({ 'message': 'failure' })
+def index(request):
+    return render(request, 'index.html')
 
 def upboat(request):
     post_id = request.POST['post_id']
@@ -58,6 +51,7 @@ def flag(request):
     post = models.Post.objects.get(id= post_id)[0]
     post.flags += 1
     post.save()
+    return JsonResponse({'message' : 'flagged'})
 
 def userprofile(request):
     if request.method == 'POST':
