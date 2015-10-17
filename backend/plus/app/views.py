@@ -94,22 +94,3 @@ def flag(request):
     post.flags += 1
     post.save()
     return JsonResponse({'message' : 'flagged'})
-
-def userprofile(request):
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, instance = request.user.profile)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/account/loggedin')
-        else:
-            user = request.user
-            profile = user.profile
-            form = ProfileForm(instance = profile)
-
-            args = {}
-            args.update(csrf(request))
-            args['userForm'] = form
-            args['user'] = request.user
-            return render_to_response('userprofile.html', args)
-                
-
