@@ -14,10 +14,18 @@ def posts(request):
 	return JsonResponse( {'posts' : Post.objects.all() })
 
 def add_user(request):
-	return JsonResponse( {'body': request.body} )
-	# username = request.GET['username']
-	# phone_number = request.GET['phone_number']
-	# password = request.GET
+	username = request.POST['username']
+	phone_number = request.POST['phone_number']
+	password = request.POST['password']
+
+	user = User.objects.get(username=username)
+	if user:
+		return JsonResponse( {'user' : user.username} )
+	else:
+		new_user = User.objects.create_user(username, password=password)
+		new_user.current_phone_number = phone_number
+		unew_ser.save()
+		return JsonResponse( {'message' : 'added user'} )
 
 def index(request):
     return render(request, 'index.html')
