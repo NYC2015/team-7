@@ -86,7 +86,7 @@ plusApi.factory('api', function($q, $http, Session) {
                     sender: from,
                     recipient: to,
                     content: body,
-                })
+                });
             },
         },
         profile: {
