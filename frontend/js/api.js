@@ -93,13 +93,13 @@ plusApi.factory('api', function($q, $http) {
                 return postData(path + "/upboat", {"post_id": postId});
             },
             postComment: function(postId, commentText) {
-                return $http.post(path + "/comment", {
+                return postData(path + "/comment", {
                     'content': commentText,
                     'post_id': postId
                 });
             },
             postStory: function(story) {
-                return $http.post(path + "/post", story);
+                return postData(path + "/post", story);
             },
             all: fakeAPICall({list: [post, post]})
         },
