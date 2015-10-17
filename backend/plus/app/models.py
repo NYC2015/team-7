@@ -34,10 +34,6 @@ class Post(models.Model):
 	content = models.TextField()
 	date_created = models.DateField()
 
-	def upVote(self):
-		self.upvotes += 1
-		self.save()
-
 class Comment(models.Model):
     content = models.TextField()
     post = models.ForeignKey(Post)
