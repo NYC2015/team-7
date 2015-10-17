@@ -23,6 +23,9 @@ def obj_to_dict(model_instance):
 def posts(request):
     posts = Post.objects.filter(flags__lt = 5).order_by('upvotes')
     posts = map(obj_to_dict, posts)
+    for post in posts:
+        post['comments'] = map(obj_to_dict, Comment.objects.filter(post=post['id']))
+
     print(posts)
     return JsonResponse({'posts':posts})
 
@@ -51,8 +54,9 @@ def comment(request):
     content = request.POST['content']
     author_id = request.POST['author']
     post_id = request.POST['post_id']
+    post = Post.objects.get(id=post_id)
     author = Profile.objects.get(id=author_id)
-    c = Comment(author=author, content=content, post=post_id)
+    c = Comment(author=author, content=content, post=post)
     c.save()
 
     author.reputation += 1
