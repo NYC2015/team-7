@@ -86,7 +86,9 @@ plusApi.factory('api', function($q, $http, Session) {
                 });
             },
             displayName: function(profile) {
-                
+                if (profile.is_anonymous) {
+                    return profile.pseudonym
+                }
             }
         },
         chat: {
