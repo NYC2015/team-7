@@ -1,28 +1,29 @@
-<div class="sidebar">
-    <div class="addMessage">
-        <a class="btn btn-xs" ng-class="{'btn-danger': notifications, 'btn-primary': !notifications}" ng-click="notifications = !notifications" href="">
-            <i class="fa" ng-class="{'fa-bell': !notifications, 'fa-bell-o': notifications}"></i>
-        </a>
-        <a class="btn btn-success btn-xs" ng-class="{'disabled': loading}" ng-click="newConversation()" href="">
-            <i class="fa fa-plus"></i>
-        </a>
-    </div>
-    <div class="conversation" ng-class="{'active': $parent.selected.key == user.key}" ng-click="selectConversation(user)" ng-repeat="user in users | orderBy: '-latest'">
-        {{ user.name == '' ? user.alias : user.name }}
-    </div>
-</div>
-<div class="main">
-    <div ng-show="selected === undefined" class="text-center">
-        <h3 class="text-muted" style="margin-top: 40px;">Select a conversation to get started.</h3>
-        <p class="text-muted">Or, start a new converstaion.</p>
-        <div ng-if="loading">
-            <br/>
-            <p class="text-muted"><i class="fa fa-3x fa-circle-o-notch fa-spin"></i></p>
+<div class="chat">
+    <div class="selection">
+        <div class="text-center select">
+            <h3>Select a conversation, or click the button to start a new chat.</h3>
+        </div>
+        <div class="chat" ng-click="selectConversation(fake)">
+            <i>Chat with:</i> my fav, my other fav <br/>
+            <div class="time">12 seconds ago</div>
+        </div>
+        <div class="chat" ng-class="{'active': $parent.selected.name == user.name}" ng-click="selectConversation(user)" ng-repeat="user in users | orderBy: '-latest'">
+            <i>Chat with:</i> {{ user.name }} <br/>
+            <div class="time">{{ user.latest }}</div>
+        </div>
+        <div class="main-action-button">
+            <button ng-click="newConversation()" class=" mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+                <i class="material-icons">add</i>
+            </button>
         </div>
     </div>
-    <div ng-hide="selected === undefined">
+    <div class="conversation" ng-hide="selected === undefined">
         <div class="top" style="width: 100%;">
-            To: <input type="text" class="input-xs to" placeholder="Address" ng-model="selected.alias">
+            <button class="back mdl-button mdl-button--raised mdl-button--accent" ng-click="selectConversation(undefined)">
+                &laquo; Go Back
+            </button>
+            
+            <input type="text" class="to" placeholder="Recipients" ng-model="selected.name">
         </div>
         <div class="messages" id="messages">
             <table>
@@ -32,7 +33,8 @@
                             <div ng-if="index > 0 ? (selected.messages[selected.messages.length - index].timestamp.getTime() + 300000) < message.timestamp.getTime() : true" class="timestamp">
                                 {{ message.timestamp | date:"MMMM d h:mm a"}}
                             </div>
-                            <div class="message" ng-class="{ 'sender': message.sender, 'receiver': !message.sender }" ng-bind-html="message.message.string">
+                            <div class="message" ng-class="{ 'sender': message.sender, 'receiver': !message.sender }">
+                                {{ message.message }}
                             </div>
                         </div>
                     </td>
