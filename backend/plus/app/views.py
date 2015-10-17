@@ -10,7 +10,6 @@ from models import *
 def posts(request):
     posts = filter(lambda x: x.flags < 5, Post.objects.all())
     posts = sorted(posts, key=lambda x: x.upvotes, reverse=True)
-	return JsonResponse( {'posts' : posts })
 
 def add_user(request):
 	username = request.POST['username']
