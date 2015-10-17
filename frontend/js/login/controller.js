@@ -12,6 +12,8 @@ loginCtrls.controller('loginCtrl', function($scope, api) {
             return;
         }
 
-        api.login.login($scope.username, $scope.password);
+        api.login.login($scope.username, $scope.password).then(function() {
+            // go to community if login was succesful
+        })
     }
 });
