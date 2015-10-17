@@ -22,8 +22,7 @@ plusCommunity.controller('communityCtrl',
             $scope.post = post;
             $scope.commentText = "";
             $scope.submit = function() {
-                communityService.sendComment($scope.commentText);
-                $scope.$close();
+                communityService.sendComment(post, $scope.commentText);
             };
         })
     .controller('StoryCreateCtrl',
