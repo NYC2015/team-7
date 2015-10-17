@@ -19,6 +19,7 @@ plsApi.factory('plusAPI', function() {
         },
         chat: {
             sendMessage: function(conversationId, message) {
+                // TODO: Replace with a promise.
                 return true;
             }
         }
