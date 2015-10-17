@@ -29,89 +29,116 @@
 
 .chat .text-muted {
   color: #999; }
-.chat .sidebar {
+.chat .selection {
   position: fixed;
   top: 0px;
   bottom: 0px;
   left: 0px;
-  width: 175px;
-  background-color: #f0f0f0;
-  border-right: 1px #b6b6b6 solid;
+  right: 0px;
+  background-color: #ddd;
   overflow: auto;
   overflow-x: hidden; }
-.chat .main {
+  .chat .selection .select {
+    background-color: #3f51b5;
+    box-shadow: black 0px 0px 2px;
+    margin: 10px;
+    padding: 10px;
+    text-align: center; }
+    .chat .selection .select h3 {
+      margin: 0;
+      color: white;
+      font-size: 18px; }
+  .chat .selection .chat {
+    background-color: #fff;
+    margin: 10px;
+    box-shadow: #555 0px 0px 2px; }
+    .chat .selection .chat i {
+      color: #999; }
+    .chat .selection .chat .time {
+      font-size: 12px; }
+    .chat .selection .chat:hover {
+      cursor: pointer;
+      background-color: #efefef; }
+.chat .conversation {
   position: fixed;
   top: 0px;
   bottom: 0px;
-  left: 175px;
+  left: 0px;
   right: 0px;
-  background-color: #E1E5EC; }
+  background-color: #E1E5EC;
+  height: 100%; }
 .chat .addMessage {
   border-bottom: 1px #b6b6b6 solid;
   text-align: right;
   padding: 5px; }
-.chat .conversation {
+.chat .chat {
   padding: 10px;
   border-bottom: 1px #e1e1e1 solid;
   /*border-top: 1px #ffffff solid;*/ }
-.chat .conversation:hover {
-  background-color: #d7d7d7;
-  /*color: #eee;*/
-  pointer: hand; }
-.chat .conversation.active {
+.chat .chat.active {
   background-color: #008CBA;
   color: white; }
-.chat .main .top {
+.chat .conversation .top {
   padding: 9px 5px 8px 5px;
   border-bottom: 1px #cecece solid; }
-.chat .main .bottom {
+.chat .conversation .bottom {
   margin: 10px;
   position: absolute;
   bottom: 0px;
   left: 0px;
   right: 0px; }
-.chat .main .bottom form {
+.chat .conversation .bottom form {
   position: relative; }
-.chat .main .bottom .loading {
+.chat .conversation .bottom .loading {
   position: absolute;
   top: 10px;
   right: 8px;
   color: #178D00; }
-.chat .main .messages {
+.chat .conversation .messages {
   position: absolute;
   top: 49px;
   bottom: 56px;
   left: 5px;
   right: 5px;
   overflow: auto; }
-.chat .main .messages table {
+.chat .conversation .messages table {
   height: 100%;
   width: 100%;
   margin: 0;
   table-layout: fixed; }
-.chat .main .messages .message {
+.chat .conversation .messages .message {
   margin: 5px;
   padding: 8px;
   clear: both;
   border-radius: 5px;
   max-width: 75%;
   word-wrap: break-word; }
-.chat .main .timestamp {
+.chat .conversation .timestamp {
   padding: 10px;
   clear: both;
   text-align: center;
   font-size: 10px;
   color: #545454; }
-.chat .main .messages .message.sender {
+.chat .conversation .messages .message.sender {
   float: right;
   background-color: #92C4F9; }
-.chat .main .messages .message.receiver {
+.chat .conversation .messages .message.receiver {
   float: left;
   background-color: #d6d6d6; }
+.chat input {
+  width: 100%;
+  font-size: 18px; }
 .chat input.to {
   width: 400px;
+  font-size: 30px;
   border: none;
   background-color: #E1E5EC; }
+.chat .back {
+  position: relative;
+  top: -7px;
+  margin-right: 5px; }
+.chat .back, .chat .to {
+  display: inline-block; }
 
 *, *:after, *:before {
   -moz-box-sizing: border-box;
@@ -145,7 +172,7 @@
 .main-action-button {
   bottom: 2em;
   right: 4em;
-  position: absolute; }
+  position: fixed; }
 
 .plus-spread {
   display: flex;
@@ -219,6 +246,14 @@
 
 .action {
   cursor: pointer; }
+
+i.action, .action i {
+  color: #bbb; }
+  i.action:hover, .action i:hover {
+    color: #555; }
+
+.flag {
+  font-size: 1.1em; }
 
 /* Dialog */
 .modal-dialog, .modal-backdrop {

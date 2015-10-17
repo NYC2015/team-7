@@ -70,7 +70,7 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
 
         var foundObj = undefined;
         for(var i in users) {
-            if(users[i].key === key) {
+            if(users[i] === key) {
                 foundObj = users[i];
                 break;
             }
@@ -151,9 +151,15 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
         $scope.selected = obj;
     }
 
+    $scope.fake = {
+        name: "Hunter Leath",
+        alias: "hunter@hunter",
+        messages: [],
+        isNew: true,
+    }
+
     $scope.selectConversation = function(obj) {
         $scope.selected = obj;
-
         $timeout(function() {
             msgDiv.scrollTop = msgDiv.scrollHeight;
         }, 0);
@@ -178,15 +184,10 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
         var toUser = $scope.selected.alias;
 
         var msg = {
-            to: [{
-                alias: $scope.selected.alias,
-            }],
-            name: "chat/" + normalize($scope.newMessage, $scope.selected.alias),
+            from: "hunter leath",
+            to: [$scope.selected.alias],
             date: sendingDate,
-            public: false,
-            components: {
-                "airdispat.ch/chat/body": {string: $scope.newMessage},
-            },    
+            body: $scope.newMessage,
         }
 
         ref.child(toUser).push(msg, function() {
@@ -209,6 +210,7 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
             $scope.newMessage = "";
 
             // this can just sort of happen, no worries
+            msg.self = true
             ourMessages.push(msg);
         });
     }

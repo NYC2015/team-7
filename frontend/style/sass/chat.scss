@@ -3,26 +3,61 @@
         color: #999;
     }
     
-    .sidebar {
+    .selection {
         position: fixed;
         top: 0px;
         bottom: 0px;
         left: 0px;
-        width: 175px;
-        background-color: #f0f0f0;
-        border-right: 1px #b6b6b6 solid;
+        right: 0px;
+        background-color: #ddd;
 
         overflow: auto;
         overflow-x: hidden;
+
+        .select {
+            background-color: #3f51b5;
+            // border: 1px solid #999;
+            box-shadow: black 0px 0px 2px;
+
+            margin: 10px;
+            padding: 10px;
+            text-align: center;
+
+            h3 {
+                margin: 0;
+                color: white;
+                font-size: 18px;
+            }
+        }
+
+        .chat {
+            background-color: #fff;
+            margin: 10px;
+            box-shadow: #555 0px 0px 2px;
+
+            i {
+                color: #999;
+            }
+
+            .time {
+                font-size: 12px;
+            }
+
+            &:hover {
+                cursor: pointer;
+                background-color: #efefef
+            }
+        }
     }
 
-    .main {
+    .conversation {
         position: fixed;
         top: 0px;
         bottom: 0px;
-        left: 175px;
+        left: 0px;
         right: 0px;
         background-color: #E1E5EC;
+        height: 100%;
     }
 
     .addMessage {
@@ -31,32 +66,23 @@
         padding: 5px;
     }
 
-    .addMessage a {
-    }
-
-    .conversation {
+    .chat {
         padding: 10px;
         border-bottom: 1px #e1e1e1 solid;
         /*border-top: 1px #ffffff solid;*/
     }
 
-    .conversation:hover {
-        background-color: #d7d7d7;
-        /*color: #eee;*/
-        pointer: hand;
-    }
-
-    .conversation.active {
+    .chat.active {
         background-color: #008CBA;
         color: white;
     }
 
-    .main .top {
+    .conversation .top {
         padding: 9px 5px 8px 5px;
         border-bottom: 1px #cecece solid;
     }
 
-    .main .bottom {
+    .conversation .bottom {
         margin: 10px;
         position: absolute;
         bottom: 0px;
@@ -64,18 +90,18 @@
         right: 0px;
     }
 
-    .main .bottom form {
+    .conversation .bottom form {
         position: relative;
     }
 
-    .main .bottom .loading {
+    .conversation .bottom .loading {
         position: absolute;
         top: 10px;
         right: 8px;
         color: #178D00;
     }
 
-    .main .messages {
+    .conversation .messages {
         position: absolute;
         top: 49px;
         bottom: 56px;
@@ -84,14 +110,14 @@
         overflow: auto;
     }
 
-    .main .messages table {
+    .conversation .messages table {
         height: 100%;
         width: 100%;
         margin: 0;
         table-layout: fixed;
     }
 
-    .main .messages .message {
+    .conversation .messages .message {
         margin: 5px;
         padding: 8px;
         clear: both;
@@ -100,7 +126,7 @@
         word-wrap: break-word;
     }
 
-    .main .timestamp {
+    .conversation .timestamp {
         padding: 10px;
         clear: both;
         text-align: center;
@@ -108,19 +134,35 @@
         color: #545454;
     }
 
-    .main .messages .message.sender {
+    .conversation .messages .message.sender {
         float: right;
         background-color: #92C4F9;
     }
 
-    .main .messages .message.receiver {
+    .conversation .messages .message.receiver {
         float: left;
         background-color: #d6d6d6;
     }
 
+    input {   
+        width: 100%;
+        font-size: 18px;
+    }
+    
     input.to {
         width: 400px;
+        font-size: 30px;
         border: none;
         background-color: #E1E5EC;
+    }
+
+    .back {
+        position: relative;
+        top: -7px;
+        margin-right: 5px;
+    }
+
+    .back, .to {
+        display: inline-block;
     }
 }
