@@ -4,4 +4,4 @@ from models import *
 
 # Create your views here.
 def post(request):
-	return JsonResponse( {'post' : Post.objects.all() })
+	return JsonResponse( {'posts' : Post.objects.all() })

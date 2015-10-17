@@ -25,7 +25,6 @@ class Message(models.Model):
 	content = models.TextField()
 
 class Post(models.Model):
-	# community = models.ForeignKey(Community)
 	poster = models.ForeignKey(User)
 	upvotes = models.IntegerField(default = 0)
 	flags = models.IntegerField(default = 0) # downvotes
@@ -36,6 +35,3 @@ class Post(models.Model):
 	def upVote(self):
 		self.upvotes += 1
 		self.save()
-
-# class Community(models.Model):
-# 	pass

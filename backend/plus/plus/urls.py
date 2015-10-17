@@ -19,5 +19,7 @@ from app.views import *
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^post', post)
+    url(r'^posts', post),
+    # url(r'^profile/user', )
+    # url(r'', )
 ]
