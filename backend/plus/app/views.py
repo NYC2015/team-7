@@ -8,7 +8,9 @@ from models import *
 
 # Create your views here.
 def posts(request):
-	return JsonResponse( {'posts' : Post.objects.all() })
+    posts = filter(lambda x: x.flags < 5, Post.objects.all())
+    posts = sorted(posts, key=lambda x: x.upvotes, reverse=True)
+	return JsonResponse( {'posts' : posts })
 
 def get_user(request):
 	username = request.POST['username']
@@ -42,7 +44,7 @@ def upboat(request):
     post = models.Post.objects.get(id= post_id)[0]
     post.upvotes += 1
     post.save()
-    return JsonResponse( {'message' : 'upvoted'} )
+    return JsonResponse( {'message' : 'upboated'} )
 
 def flag(request):
     post_id = request.POST['post_id']
