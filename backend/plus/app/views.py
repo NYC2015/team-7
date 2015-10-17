@@ -3,5 +3,5 @@ from django.http import JsonResponse
 from models import *
 
 # Create your views here.
-def community(request):
-	return JsonResponse( {'community' : Community.objects.all() })
+def post(request):
+	return JsonResponse( {'post' : Post.objects.all() })
