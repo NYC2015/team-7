@@ -1,6 +1,6 @@
 'use strict';
 
-var plusLearnControllers = angular.module('plus.learn');
+var plusLearnControllers = angular.module('plus.learn', []);
 
 plusLearnControllers.controller('learnCtrl', function($scope, api) {
     api.profile.current().success(function(profile) {
