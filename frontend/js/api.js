@@ -28,10 +28,10 @@ plsApi.factory('plusAPI', function($q) {
             })
         },
         chat: {
-            sendMessage: function(conversationId, message) {
-                // TODO: Replace with a promise.
-                return true;
-            }
+            sendMessage: fakeAPICall(
+                true,
+                ["conversationId", "message"]
+            )
         }
     }
 })
