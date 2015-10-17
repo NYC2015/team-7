@@ -1,19 +1,38 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 
 from django.http import JsonResponse
 from forms import ProfileForm
 from django.core.context_processors import csrf
 from django.http import HttpResponseRedirect
 from models import *
+import datetime
 
 # Create your views here.
-def index(request):
-	return redirect('/static/index.html')
-
 def posts(request):
     posts = filter(lambda x: x.flags > 5, Post.objects.all())
     posts = sorted(posts, key=lambda x: x.upvotes, reverse=True)
     return JsonResponse({'posts':posts})
+
+# Make a post
+def post(request):
+   content = request.POST['content'] 
+   author = request.POST['author']
+   title = request.POST['title'] 
+   date_created = datetime.date.today()
+   p = models.Post.objects.create_post(author=author,
+                                       content=content,
+                                       title=title,
+                                       date_created=date_created)
+   p.save()
+   return JsonResponse({'message':'Post Created'})
+
+# Make a comment
+def comment(request):
+   content = request.POST['content']
+   author = request.POST['author']
+   c = models.Comment.objects.create_comment(author=author, content=content)
+   c.save()
+   return JsonResponse({'message':'Comment Created'})
 
 def get_user(request):
 	username = request.POST['username']
