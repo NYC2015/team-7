@@ -10,7 +10,7 @@ registerCtrls.controller('registerCtrl', function($scope, api) {
             'phone_number': $scope.number,
             disease: $scope.status,
         }).then(function() {
-            
+            console.log("succesfully registered")
         })
     }
 });
