@@ -17,14 +17,16 @@ def add_user(request):
 	username = request.POST['username']
 	phone_number = request.POST['phone_number']
 	password = request.POST['password']
+	disease = int(request.POST['disease'])
 
-	user = User.objects.get(username=username)
-	if user:
-		return JsonResponse( {'user' : user.username} )
+	if User.objects.filter(username=username).exists():
+		user = User.objects.get(username=username)
+		profile = Profile.objects.get(user=user)
+		return JsonResponse( {'user' : user.username, 'phone_number': profile.current_phone_number} )
 	else:
 		new_user = User.objects.create_user(username, password=password)
-		new_user.current_phone_number = phone_number
-		unew_ser.save()
+		profile = Profile(user=new_user, current_phone_number=phone_number, diseases=disease)
+		profile.save()
 		return JsonResponse( {'message' : 'added user'} )
 
 def index(request):
