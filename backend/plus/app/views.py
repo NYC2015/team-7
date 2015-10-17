@@ -21,13 +21,13 @@ def post(request):
    author = Profile.objects.get(id=author_id)
    title = request.POST['title'] 
    date_created = datetime.date.today()
-   p = Post.objects.create_post(author=author,
-                                       content=content,
-                                       title=title,
-                                       date_created=date_created)
+   p = Post(author=author,
+            content=content,
+            title=title,
+            date_created=date_created)
    p.save()
 
-   return JsonResponse({'post':p})
+   return JsonResponse({'post_id':p.id})
 
 def leaders(request):
    users = Profile.objects.all()
@@ -39,13 +39,13 @@ def comment(request):
    content = request.POST['content']
    author_id = request.POST['author']
    author = Profile.objects.get(id=author_id)
-   c = Comment.objects.create_comment(author=author, content=content)
+   c = Comment(author=author, content=content)
    c.save()
 
    author.reputation += 1
    author.save()
 
-   return JsonResponse({'comment':c})
+   return JsonResponse({'comment_id':c.id})
 
 def register(request):
 	username = request.POST['username']
@@ -71,7 +71,7 @@ def login(request):
 		profile = Profile.objects.get(user=user)
 		return JsonResponse({
 				'user' : user.username,
-				'user_id': user.id,
+				'user_id': profile.id,
 				'phone_number': profile.current_phone_number,
 				'disease': profile.diseases
 			})
