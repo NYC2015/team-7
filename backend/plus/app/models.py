@@ -6,7 +6,7 @@ class Profile(models.Model):
 	user = models.OneToOneField(User)
 	is_anonymous = models.BooleanField(default=True)
 	DISEASE_CHOICES = (
-		(0, 'Survivor'),
+		(0, 'Victor'),
 		(1, 'HIV'),
 		(2, 'AIDS'),
 		(3, 'None')
