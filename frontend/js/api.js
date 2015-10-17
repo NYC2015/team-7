@@ -81,9 +81,11 @@ plusApi.factory('api', function($q, $http, Session) {
 
     return {
         text: {
-            send: function(body, to) {
+            send: function(body, from, to) {
                 return postData(path + "/send", {
-                    body:
+                    sender: from,
+                    recipient: to,
+                    content: body,
                 })
             },
         },
