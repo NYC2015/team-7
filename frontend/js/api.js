@@ -111,7 +111,7 @@ plusApi.factory('api', function($q, $http) {
                 });
             },
             register: function(registerInfo) {
-                return postData(path + "/login", {
+                return postData(path + "/register", {
                     username: username,
                     password: password,
                 });
