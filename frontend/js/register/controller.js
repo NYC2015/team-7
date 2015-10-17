@@ -1,7 +1,9 @@
 'use strict';
 
-var registerCtrls = angular.module('plus.registration', []);
+var registerCtrls = angular.module('plus.registration', ['plus.api']);
 
 registerCtrls.controller('registerCtrl', function($scope) {
-    console.log("register")
+    $acope.register = function() {
+        
+    }
 });
