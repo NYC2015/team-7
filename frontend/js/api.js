@@ -93,7 +93,8 @@ plusApi.factory('api', function($q, $http) {
                 ["postId", "message"]
             ),
             upvote: function(postId) {
-                return $http.post(path + "/upboat", {"post_id": postId});
+                return postData(path+)
+                return postData(path + "/upboat", {"post_id": postId});
             },
             postStory: function(story) {
                 return $http.post(path + "/post", story);
