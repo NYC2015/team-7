@@ -11,6 +11,7 @@ class Profile(models.Model):
 		(2, 'AIDS'),
 		(3, 'None')
 	)
+    reveal_to_others = models.BooleanField(default=False)
 	diseases = models.IntegerField(choices = DISEASE_CHOICES)
 	name = models.CharField(max_length = 100, blank = True)
 	pseudonym = models.CharField(max_length = 100, blank = True)

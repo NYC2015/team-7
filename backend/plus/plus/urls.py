@@ -28,5 +28,6 @@ urlpatterns = [
     url(r'^upboat', upboat),
     url(r'^flag', flag),
     url(r'^post', post),
+    url(r'^leaders', leaders),
     url(r'^register', register),
    ]

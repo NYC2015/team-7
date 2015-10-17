@@ -29,6 +29,11 @@ def post(request):
 
    return JsonResponse({'post':p})
 
+def leaders(request):
+   users = Profile.objects.all()
+   leaders = sorted(users, key=lambda x: x.reputation, reverse=True)[-30:]
+   return JsonResponse({'leaders':leaders})
+
 # Make a comment
 def comment(request):
    content = request.POST['content']
