@@ -21,8 +21,8 @@ from app.views import posts, add_user, upboat, flag
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^posts', posts),
-    url(r'^add_user', add_user),
+    url(r'^posts$', posts),
+    url(r'^login', login),
     url(r'^send', 'plus_twilio.send'),
     url(r'^receive', 'plus_twilio.receive'),
     url(r'^upboat', upboat),
