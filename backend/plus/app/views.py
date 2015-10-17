@@ -27,7 +27,7 @@ def post(request):
                                        date_created=date_created)
    p.save()
 
-   return JsonResponse({'message':'Post Created'})
+   return JsonResponse({'post':p})
 
 # Make a comment
 def comment(request):
@@ -40,7 +40,7 @@ def comment(request):
    author.reputation += 1
    author.save()
 
-   return JsonResponse({'message':'Comment Created'})
+   return JsonResponse({'comment':c})
 
 def register(request):
 	username = request.POST['username']
