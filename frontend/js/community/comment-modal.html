@@ -14,7 +14,8 @@
   </div>
 
   <div class="plus-spread full-width">
-    <textarea></textarea>
-    <a class="mdl-button mdl-button--primary">Send</a>
+    <textarea ng-model="commentText"></textarea>
+    <a class="mdl-button mdl-button--primary"
+       ng-click="submit(commentText)">Send</a>
   </div>
 </div>

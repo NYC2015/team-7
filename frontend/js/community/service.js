@@ -23,16 +23,22 @@ angular.module('plus.community').service('communityService',
             modalInstance.result.then(function(story) {
                 story.author = "me";
                 //content author title
-                api.community.postStory(story).then(function(res) {
-                    console.log(res);
+                api.community.postStory(story).then(function(post) {
+                    service.exports.list.push(post);
                 });
             });
         };
 
         service.upvote = function(post) {
             api.community.upvote(post.id).then(function(res) {
-                console.log(post.id);
+                post.votes++;
             });
+        };
+
+        service.sendComment = function(post, text) {
+            api.community.postComment(post.id, text).then(function(comment) {
+                post.comments.push(comment);
+            });;
         };
 
         service.viewComments = function(post) {

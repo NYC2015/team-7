@@ -89,11 +89,14 @@ plusApi.factory('api', function($q, $http) {
             )
         },
         community: {
-            postComment: fakeAPICall(
-                ["postId", "message"]
-            ),
             upvote: function(postId) {
                 return postData(path + "/upboat", {"post_id": postId});
+            },
+            postComment: function(postId, commentText) {
+                return $http.post(path + "/comment", {
+                    'content': commentText,
+                    'post_id': postId
+                });
             },
             postStory: function(story) {
                 return $http.post(path + "/post", story);
