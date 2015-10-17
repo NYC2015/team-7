@@ -84,10 +84,7 @@ def login(request):
         django_login(request, user)
         profile = Profile.objects.get(user=user)
         return JsonResponse({
-            'user' : user.username,
-            'user_id': profile.id,
-            'phone_number': profile.current_phone_number,
-            'disease': profile.diseases
+        		'profile' : obj_to_dict(profile)
             })
     else:
         return JsonResponse({ 'message': 'Incorrect username or password' })
@@ -114,14 +111,24 @@ def flag(request):
     post.save()
     return JsonResponse({'message' : 'flagged'})
 
-def update_anonymity(request):
-	user = User.objects.get(username=request.POST['username'])
-	profile = Profile.objects.get(user=user)
-	profile.is_anonymous = !profile.is_anonymous
-	profile.save()
-	return JsonResponse({
-			'username': user.username,
-			'is_anonymous': profile.is_anonymous
-		})
+# def profile(request):
+# 	username = request.POST['username']
+# 	user = User.objects.get(username=username)
+# 	profile = obj_to_dict(Profile.objects.get(user=user))
+# 	return JsonResponse({
+# 			'profile': profile
+# 		})
 
 
+# def update_profile(request):
+# 	field = request.POST['field']
+# 	value = request.POST['value']
+# 	username = request.POST['username']
+# 	user = User.objects.get(username=username)
+# 	profile = Profile.objects.get(user=user)
+# 	setattr(profile, field, bool(value))
+# 	profile.save()
+# 	return JsonResponse({
+# 			'username': user.username,
+# 			field: getattr(profile, field)
+# 		})
