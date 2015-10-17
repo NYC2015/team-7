@@ -29,6 +29,12 @@ class Post(models.Model):
 	title = models.TextField()
 	content = models.TextField()
 	date_created = models.DateField()
+	upVotes = models.IntegerField(default = 0)
+
+	def upVote(self):
+		self.upVotes += 1
+		self.save()
+
 
 class Community(models.Model):
 	pass
