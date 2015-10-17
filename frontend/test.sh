@@ -3,7 +3,7 @@ for (( ;; ))
         echo "1" >> test.txt
         git add -A
         git commit -m "updates"
-        git pull
+        git pull -Xtheirs
         git push
         # sleep 1
     done
