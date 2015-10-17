@@ -4,11 +4,23 @@ angular.module("plus", ["ui.router",
     "plus.learn",
     "plus.profile",
     "plus.header",
-    "ui.bootstrap"
+    "ui.bootstrap",
+    "plus.registration",
+    "plus.login",
 ]).config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/community");
 
     $stateProvider
+        .state('login', {
+            url: "/login",
+            controller: "loginCtrl",
+            templateUrl: "js/login/login.html"
+        })
+        .state('register', {
+            url: "/register",
+            controller: "registerCtrl",
+            templateUrl: "js/register/register.html"
+        })
         .state('community', {
             url: "/community",
             controller: "communityCtrl",

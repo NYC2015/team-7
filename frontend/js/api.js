@@ -59,7 +59,22 @@ plusApi.factory('api', function($q, $http) {
         };
     };
 
-    var path = "localhost:8000";
+    var path = "http://localhost:8000";
+
+    var postData = function(path, data) {
+        return $http({
+            method: 'POST',
+            url: path,
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj) {
+                var str = [];
+                for(var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+            },
+            data: data,
+        });
+    }
 
     return {
         profile: {
@@ -87,6 +102,18 @@ plusApi.factory('api', function($q, $http) {
         },
         learn: {
             all: fakeAPICall([resource, resource])
-        }
+        },
+        login: {
+            login: function(username, password) {
+                return postData(path + "/login", {
+                    username: username,
+                    password: password,
+                });
+            },
+            register: function(registerInfo) {
+                console.log("register");
+            }
+        },
     };
 });
+

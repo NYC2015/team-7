@@ -14,6 +14,7 @@ class Profile(models.Model):
 	diseases = models.IntegerField(choices = DISEASE_CHOICES)
 	name = models.CharField(max_length = 100, blank = True)
 	pseudonym = models.CharField(max_length = 100, blank = True)
+	reputation = models.IntegerField(default = 0)
 	current_phone_number = models.CharField(max_length = 12)
 
 class Chat(models.Model):
@@ -21,11 +22,11 @@ class Chat(models.Model):
 
 class Message(models.Model):
 	chat = models.ForeignKey(Chat)
-	sender = models.ForeignKey(User)
+	sender = models.ForeignKey(Profile)
 	content = models.TextField()
 
 class Post(models.Model):
-	poster = models.ForeignKey(User)
+	author = models.ForeignKey(Profile, default = 0)
 	upvotes = models.IntegerField(default = 0)
 	flags = models.IntegerField(default = 0) # downvotes
 	title = models.TextField()
@@ -35,6 +36,11 @@ class Post(models.Model):
 	def upVote(self):
 		self.upvotes += 1
 		self.save()
+
+class Comment(models.Model):
+    content = models.TextField()
+    # extra time upvotes
+    author = models.ForeignKey(Profile)
 		
 User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
 # class Community(models.Model):
