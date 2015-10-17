@@ -18,8 +18,13 @@ plusCommunity.controller('communityCtrl',
             $scope.viewComments = communityService.viewComments;
         })
     .controller('CommentCtrl',
-        function($scope, post) {
+        function($scope, communityService, post) {
             $scope.post = post;
+            $scope.commentText = "";
+            $scope.submit = function() {
+                communityService.sendComment($scope.commentText);
+                $scope.$close();
+            };
         })
     .controller('StoryCreateCtrl',
         function($scope) {

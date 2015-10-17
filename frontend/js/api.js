@@ -35,7 +35,7 @@ var post = {
     body: "so there i was at the gorcery store",
     author: profile,
     votes: 50,
-    id: 'post',
+    id: 1,
     comments: [comment, comment, comment]
 };
 
@@ -89,11 +89,14 @@ plusApi.factory('api', function($q, $http) {
             )
         },
         community: {
-            postComment: fakeAPICall(
-                ["postId", "message"]
-            ),
             upvote: function(postId) {
                 return postData(path + "/upboat", {"post_id": postId});
+            },
+            postComment: function(postId, commentText) {
+                return $http.post(path + "/comment", {
+                    'content': commentText,
+                    'post_id': postId
+                });
             },
             postStory: function(story) {
                 return $http.post(path + "/post", story);
