@@ -16,6 +16,11 @@ plsApi.factory('plusAPI', function() {
                     }
                 }
             }
+        },
+        chat: {
+            sendMessage: function(conversationId, message) {
+                return true;
+            }
         }
     }
 })
