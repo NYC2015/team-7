@@ -2,7 +2,19 @@
 
 var plusApi = angular.module('plus.api');
 
-plsApi.factory('plusAPI', function() {
+var fakeAPICall = function(response, args) {
+    return function() {
+        var defer = $q.defer();
+
+        setTimeout(function() {
+            defer.resolve(response);
+        }, 0);
+
+        return defer.promise;
+    }
+}
+
+plsApi.factory('plusAPI', function($q) {
     return {
         profile: {
             current: function() {
