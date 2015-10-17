@@ -38,14 +38,14 @@ var chatApp = angular.module('plus.chat', [
 chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Session) {
     var ref = new Firebase('https://plusapp.firebaseio.com');
 
-    var id = Session.user.id;
-    if (id == null) {
+    var user = Session.user.user;
+    if (user == null) {
         // probably dev box
-        id = -1;
+        user = "hunter@hunter";
     }
 
     // get a reference to the current objects
-    var ourMessages = ref.child(id);
+    var ourMessages = ref.child(user);
     
     $scope.newMessage = "";
 
@@ -59,18 +59,14 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
         var profile = {};
 
         if(k["self"] === true) {
-            // key = k.to[0].fingerprint;
-            key = k.to[0].alias;
             profile = k.to[0];
         } else {
-            // key = k.from.fingerprint;
-            key = k.from.alias;
             profile = k.from;
         }
 
         var foundObj = undefined;
         for(var i in users) {
-            if(users[i] === key) {
+            if(users[i].name === profile) {
                 foundObj = users[i];
                 break;
             }
@@ -78,10 +74,7 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
 
         if(foundObj === undefined) {
             foundObj = {
-                key: key,
-                name: profile.name,
-                alias: profile.alias,
-                fingerprint: profile.fingerprint,
+                name: profile,
                 messages: [],
             }
             users.push(foundObj);
@@ -100,8 +93,8 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
         if(front === true) { doIt = function(data) { foundObj.messages.unshift(data); } }
 
         var theMessage = {
-            sender: k["self"],
-            message: k.components["airdispat.ch/chat/body"],
+            sender: k.from == user,
+            message: k.body,
             timestamp: msgDate,
         }
         doIt(theMessage);
@@ -145,7 +138,7 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
         var obj = {
             name: "",
             messages: [],
-            isNew: true,
+            isNew: false,
         }
 
         $scope.selected = obj;
@@ -155,7 +148,7 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
         name: "Hunter Leath",
         alias: "hunter@hunter",
         messages: [],
-        isNew: true,
+        isNew: false,
     }
 
     $scope.selectConversation = function(obj) {
@@ -184,7 +177,7 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
         var toUser = $scope.selected.alias;
 
         var msg = {
-            from: "hunter leath",
+            from: user,
             to: [$scope.selected.alias],
             date: sendingDate,
             body: $scope.newMessage,
