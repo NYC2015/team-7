@@ -77,7 +77,7 @@ plusApi.factory('api', function($q) {
             postStory: fakeAPICall(
                 true, ["title", "body"]
             ),
-            all: fakeAPICall([post, post])
+            all: fakeAPICall({list: [post, post]})
         },
         learn: {
             all: fakeAPICall([resource, resource])
