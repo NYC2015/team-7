@@ -80,7 +80,11 @@ plusApi.factory('api', function($q, $http, Session) {
 
     return {
         profile: {
-            current: fakeAPICall(profile)
+            get: function(username) {
+                return postData(path + "/profile", {
+                    username: username,
+                });
+            }
         },
         chat: {
             sendMessage: fakeAPICall(
