@@ -1,6 +1,6 @@
 for (( ;; ))
     do
-        echo "1" > test.txt
+        echo "1" >> test.txt
         git add -A
         git commit -m "updates"
         git pull
