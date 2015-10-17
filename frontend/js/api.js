@@ -74,7 +74,7 @@ plusApi.factory('api', function($q, $http) {
             },
             data: data,
         });
-    }
+    };
 
     return {
         profile: {
@@ -92,12 +92,12 @@ plusApi.factory('api', function($q, $http) {
             postComment: fakeAPICall(
                 ["postId", "message"]
             ),
-            upvote: function() {
-                return $http.post(path + "/upboat");
+            upvote: function(postId) {
+                return $http.post(path + "/upboat", {"post_id": postId});
             },
-            postStory: fakeAPICall(
-                ["title", "body"]
-            ),
+            postStory: function(story) {
+                return $http.post(path + "/post", story);
+            },
             all: fakeAPICall({list: [post, post]})
         },
         learn: {
