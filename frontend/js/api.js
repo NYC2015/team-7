@@ -62,7 +62,7 @@ plusApi.factory('api', function($q, $http) {
     var path = "http://localhost:8000";
 
     var argsToPost = function(path) {
-        
+        return postData(path, arguments);
     }
 
     var postData = function(path, data) {
