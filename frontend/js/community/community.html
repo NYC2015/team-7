@@ -1,15 +1,20 @@
 <ul class="feed">
-  <li class="post" ng-repeat="post in community.list">
+  <li class="post" ng-repeat="post in community.list track by $index">
     <div class="post-inner">
       <div class="post-title">
+        {{post.title}}
       </div>
-      <div class="post"></div>
+      <div class="post-score">{{post.votes}}</div>
+      <div class="post-author">
+        {{post.author.name}}
+      </div>
     </div>
   </li>
 </ul>
 
 <div class="main-action-button">
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"
+          ng-click="postStory()">
     <i class="material-icons">add</i>
   </button>
 </div>
