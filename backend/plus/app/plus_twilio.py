@@ -16,8 +16,7 @@ def send_message(request):
     sender_name = sender_profile.pseudonym if sender_profile.is_anonymous else sender_profile.name
 
     content = sender_name + "says:\n" + content
-    message = client.messages.create(to="+17034243826",
-                                     recipient_profile.phone_number, from_="+14155992671", body=content)
+    message = client.messages.create(to="+17034243826", from_="+14155992671", body=content)
     return JsonResponse({'message':"Sent!"})
 
 def receive_message(request):
