@@ -19,5 +19,6 @@ from app.views import *
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^profile/$', 'views.userprofile'),
     url(r'^post', post)
 ]
