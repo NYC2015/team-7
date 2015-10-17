@@ -11,11 +11,11 @@ class Profile(models.Model):
 		(2, 'AIDS'),
 		(3, 'None')
 	)
-    reveal_to_others = models.BooleanField(default=False)
-    diseases = models.IntegerField(choices = DISEASE_CHOICES)
+	reveal_to_others = models.BooleanField(default=False)
+	diseases = models.IntegerField(choices = DISEASE_CHOICES)
 	name = models.CharField(max_length = 100, blank = True)
 	pseudonym = models.CharField(max_length = 100, blank = True)
-    reputation = models.IntegerField(default = 0)
+	reputation = models.IntegerField(default = 0)
 	current_phone_number = models.CharField(max_length = 12)
 
 class Chat(models.Model):
@@ -40,6 +40,6 @@ class Post(models.Model):
 
 class Comment(models.Model):
     content = models.TextField()
-    post = ForeignKey(Post)
+    post = models.ForeignKey(Post)
     # extra time upvotes
     author = models.ForeignKey(Profile)
