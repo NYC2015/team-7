@@ -84,6 +84,9 @@ plusApi.factory('api', function($q, $http, Session) {
                 return postData(path + "/profile", {
                     username: username,
                 });
+            },
+            name: function(profile) {
+                
             }
         },
         chat: {
