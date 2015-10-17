@@ -1,0 +1,12 @@
+/* line 1, ../sass/login.scss */
+.login, .registration {
+  padding: 10px;
+  background-color: #eee;
+}
+/* line 6, ../sass/login.scss */
+.login .header, .registration .header {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #444;
+}
