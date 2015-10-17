@@ -97,6 +97,7 @@ plusApi.factory('api', function($q, $http, Session) {
                 });
             },
             postComment: function(postId, commentText) {
+                console.log(postId, commentText);
                 return postData(path + "/comment", {
                     'content': commentText,
                     'post_id': postId,

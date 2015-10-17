@@ -39,6 +39,7 @@ angular.module('plus.community').service('communityService',
         };
 
         service.sendComment = function(post, text) {
+            console.log(post, text);
             api.community.postComment(post.id, text).then(function(res) {
                 var comment = {
                     content: text,
