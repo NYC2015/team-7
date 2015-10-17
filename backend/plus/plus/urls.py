@@ -31,6 +31,6 @@ urlpatterns = [
     url(r'^comment', comment),
     url(r'^leaders', leaders),
     url(r'^register', register),
-    url(r'^profile', profile)
-    # url(r'^update_anonymity', update_anonymity)
+    url(r'^profile', profile),
+    url(r'^update_anonymity', update_anonymity)
    ]

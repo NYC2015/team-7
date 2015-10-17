@@ -119,15 +119,14 @@ def profile(request):
 			'profile': obj_to_dict(profile)
 		})
 
-# def update_anonymity(request):
-# 	username = request.POST['username']
-# 	user = User.objects.get(username=username)
-# 	profile = Profile.objects.get(user=user)
-# 	profile.is_anonymous = profile.is_anonymous
-# 	profile.save()
-# 	return JsonResponse({
-# 			'username': user.username,
-# 			'is_anonymous': profile.is_anonymous
-# 		})
-
-
+def update_anonymity(request):
+	username = request.POST['username']
+	is_anonymous = request.POST['is_anonymous'].lower() == 'true'
+	user = User.objects.get(username=username)
+	profile = Profile.objects.get(user=user)
+	profile.is_anonymous = is_anonymous
+	profile.save()
+	return JsonResponse({
+			'username': user.username,
+			'is_anonymous': profile.is_anonymous,
+		})
