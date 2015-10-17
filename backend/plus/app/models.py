@@ -14,7 +14,7 @@ class Profile(models.Model):
 	diseases = models.IntegerField(choices = DISEASE_CHOICES)
 	name = models.CharField(max_length = 100, blank = True)
 	pseudonym = models.CharField(max_length = 100, blank = True)
-    reputation = models.IntegerField(default = 0)
+	reputation = models.IntegerField(default = 0)
 	current_phone_number = models.CharField(max_length = 12)
 
 class Chat(models.Model):
