@@ -7,7 +7,7 @@ registerCtrls.controller('registerCtrl', function($scope, api) {
         api.login.register({
             username: $scope.username,
             password: $scope.password,
-            
+            'phone_number': $scope.number,
         })
     }
 });
