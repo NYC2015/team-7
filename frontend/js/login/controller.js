@@ -15,6 +15,7 @@ loginCtrls.controller('loginCtrl', function($scope, api, $state, Session) {
         api.login.login($scope.username, $scope.password).then(function(res) {
             Session.user.id = res.data.profile.id;
             Session.user.name = res.data.profile.name;
+            Session.user.name = res.data.profile.name;
             $state.go('community');
         }, function(res) {
             $scope.error = res;
