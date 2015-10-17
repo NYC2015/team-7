@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^posts$', posts),
     url(r'^add_user', add_user)
+    # url(r'^profile/$', 'views.userprofile'),
     # url(r'^profile/user', )
     # url(r'^$', 'django.contrib.staticfiles.views.serve', kwargs = {'path' : 'index.html', 'document_root' : settings.STATIC_ROOT}),
 # ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
