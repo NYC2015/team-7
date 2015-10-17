@@ -44,10 +44,17 @@
   display: flex
   justify-content: space-between
   align-items: center
+  &.vertical
+    flex-direction: column
   &.align-bottom
     align-items: bottom
   &.pull-left
     justify-content: flex-start
+.full-width
+  width: 100%
+.full-height
+  height: 100%
+  
 
 .mdl-layout
   position: absolute
@@ -95,7 +102,6 @@
 
 .post-score
   color: #999
-  font-size: 1.5em 
   margin-right: .25em
 
 .post-comments
@@ -103,3 +109,59 @@
 
 .action
   cursor: pointer
+
+/* Dialog */
+  
+.modal-dialog, .modal-backdrop
+  position: fixed
+  display: flex
+  align-items: center
+  justify-content: center
+  overflow: auto
+  -webkit-overflow-scrolling: touch
+  z-index: 10000
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+
+  .modal-content
+    position: absolute
+    top: 2em
+    right: 2em
+    bottom: 2em
+    left: 2em 
+    background: white
+    box-shadow: 1px 1px 10px #555 
+    font-size: 1.1em
+    line-height: 1.5em
+    padding: 1em
+    .submit
+      margin-top: 12px
+    h2
+      margin-top: 5px
+    label
+      display: block
+      font-size: .9em
+    h5 
+      display: inline-block
+      margin: 0
+    textarea
+      width: 100%
+      outline: none
+      border: none
+      border-bottom: 1px solid #ccc
+      font-size: 1em
+    input
+      outline: none
+    .modal-title
+      padding-bottom: 1em
+      border-bottom: 1px solid #ddd
+    .profile
+      background: white
+    .submit
+      margin-top: 1em
+
+.modal-backdrop
+  opacity: .3
+  background-color: #555

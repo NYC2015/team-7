@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('plus.community').service('communityService',
-    function(api, $q) {
+    function(api, $q, $uibModal) {
         var service = {};
 
         service.ready = $q.defer();
@@ -16,14 +16,33 @@ angular.module('plus.community').service('communityService',
         });
 
         service.postStory = function(story) {
-            api.commmunity.postStory().then(function(res) {
-                console.log(res);
+            var modalInstance = $uibModal.open({
+                templateUrl: 'js/community/create-content-modal.html',
+                controller: 'StoryCreateCtrl'
+            });
+            modalInstance.result.then(function(story) {
+                //content author title
+                api.commmunity.postStory().then(function(res) {
+                    console.log(res);
+                });
             });
         };
 
         service.upvote = function(post) {
             api.community.upvote(post).then(function(res) {
                 console.log(post.id);
+            });
+        };
+
+        service.viewComments = function(post) {
+            var modalInstance = $uibModal.open({
+                templateUrl: 'js/community/comment-modal.html',
+                controller: 'CommentCtrl',
+                resolve: {
+                    post: function() {
+                        return post;
+                    }
+                }
             });
         };
 

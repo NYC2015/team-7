@@ -1,0 +1,28 @@
+<span class="plus-spread modal-title">
+  <h5 style="max-width: 90%">Create a Story</h5>
+  <i class="material-icons action"
+     ng-click="$dismiss()">close</i>
+</span>
+
+<div class="profile">
+  <p class="header">Post Title</p>
+  <div class="basic box">
+    <input class="mdl-textfield__input"
+           type="text" id="title"
+           ng-model="post.title"/>
+  </div>
+
+  <p class="header box">Post Content</p>
+  <div class="basic box">
+    <textarea class="mdl-textfield__input"
+              rows="5" type="text" id="bio"
+              ng-model="post.content" ></textarea>
+  </div>
+
+  <div class="submit"> 
+    <button class="mdl-button mdl-button--raised mdl-button--accent"
+            ng-click="$close(post)">
+      Submit to Community
+    </button>
+  </div>
+</div>
