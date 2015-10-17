@@ -1,6 +1,6 @@
 'use strict';
 
-var plusApi = angular.module('plus.api');
+var plusApi = angular.module('plus.api', []);
 
 var fakeAPICall = function(response, args) {
     return function() {
