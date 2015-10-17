@@ -58,7 +58,6 @@ plusApi.factory('api', function($q, $http, Session) {
             return defer.promise;
         };
     };
-
     
     var path = "http://localhost:8000";
 
