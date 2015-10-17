@@ -26,7 +26,7 @@ class Message(models.Model):
 	content = models.TextField()
 
 class Post(models.Model):
-	author = models.ForeignKey(Profile)
+	author = models.ForeignKey(Profile, default = 0)
 	upvotes = models.IntegerField(default = 0)
 	flags = models.IntegerField(default = 0) # downvotes
 	title = models.TextField()

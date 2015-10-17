@@ -42,6 +42,21 @@ def comment(request):
 
    return JsonResponse({'message':'Comment Created'})
 
+def register(request):
+	username = request.POST['username']
+	phone_number = request.POST['phone_number']
+	password = request.POST['password']
+	disease = int(request.POST['disease'])
+	user = User.objects.create_user(username, password=password)
+	profile = Profile(user=user, current_phone_number=phone_number, diseases=disease)
+	profile.save()
+	return JsonResponse({
+							'user': user.username,
+							'phone_number': profile.current_phone_number,
+							'disease': profile.diseases
+						})
+	
+
 def login(request):
 	username = request.POST['username']
 	password = request.POST['password']
@@ -56,31 +71,6 @@ def login(request):
 			})
 	else:
 		return JsonResponse({ 'message': 'Incorrect username or password' })
-	# username = request.POST['username']
-	# phone_number = request.POST['phone_number']
-	# password = request.POST['password']
-	# disease = int(request.POST['disease'])
-
-	# if User.objects.filter(username=username).exists():
-	# 	user = authenticate(username=username, password=password)
-	# 	if user:
-	# 		profile = Profile.objects.get(user=user)
-	# 		return JsonResponse({
-	# 								'user' : user.username, 
-	# 								'phone_number': profile.current_phone_number,
-	# 								'disease': profile.diseases
-	# 							})
-	# 	else:
-	# 		return JsonResponse({ 'message': 'Incorrect password.'})
-	# else:
-	# 	new_user = User.objects.create_user(username, password=password)
-	# 	profile = Profile(user=new_user, current_phone_number=phone_number, diseases=disease)
-	# 	profile.save()
-	# 	return JsonResponse({
-	# 							'user': new_user.username,
-	# 							'phone_number': profile.current_phone_number,
-	# 							'disease': profile.diseases
-	# 						})
 
 def index(request):
     return render(request, 'index.html')
