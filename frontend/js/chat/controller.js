@@ -38,7 +38,8 @@ var chatApp = angular.module('plus.chat', [
 chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Session) {
     var ref = new Firebase('https://plusapp.firebaseio.com');
 
-    var user = Session.user.user;
+    console.log(Session);
+    var user = Session.user.name;
     if (user == null) {
         // probably dev box
         user = "hunter@hunter";
@@ -128,7 +129,7 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
         }
 
         $timeout(function() {
-            msgDiv.scrollTop = msgDiv.scrollHeight;
+            msgDiv.scrollTop = msgDiv.scrollHeight + 30;
         }, 0);
     });
 
@@ -196,6 +197,7 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
             $timeout(function() {
                 msgDiv.scrollTop = msgDiv.scrollHeight;
                 document.getElementById("newMessageText").focus();
+                console.log(document.getElementById('newMessageText'));
             }, 0);
 
             $scope.newMessage = "";
