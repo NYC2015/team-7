@@ -9,5 +9,10 @@ plusCommunity.controller('communityCtrl',
             console.log(communityService.exports);
         });
 
+        $scope.upvote = function(post) {
+            console.log(post);
+            communityService.upvote(post); 
+        };
+
         $scope.postStory = communityService.postStory;
     });

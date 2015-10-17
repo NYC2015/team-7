@@ -1,5 +1,4 @@
-angular.module("plus", [
-    "ui.router",
+angular.module("plus", ["ui.router",
     "plus.community",
     "plus.chat",
     "plus.learn",

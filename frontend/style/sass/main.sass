@@ -1,5 +1,18 @@
-
 @import 'profile'
+
+=no-select()
+  -webkit-touch-callout: none
+  -webkit-user-select: none
+  -khtml-user-select: none
+  -moz-user-select: none
+  -ms-user-select: none
+  user-select: none
+
+*, *:after, *:before
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+  +no-select()
 
 .mdl-layout__header-row, .mdl-layout__tab-bar-container, .mdl-layout__tab-bar
   height: 44px
@@ -9,7 +22,7 @@
   height: 43px
 
 .mdl-layout__tab
-  height: 42px
+  height: 44px
   line-height: 42px
   &:focus
     outline: none
@@ -30,6 +43,10 @@
   display: flex
   justify-content: space-between
   align-items: center
+  &.align-bottom
+    align-items: bottom
+  &.pull-left
+    justify-content: flex-start
 
 .mdl-layout
   position: absolute
@@ -59,3 +76,29 @@
     display: none
   z-index: 1
   background: #f9f9f9
+
+/* Post styling */
+
+.feed
+  list-style: none
+  padding: .75em
+
+.post
+  background: white
+  width: 100%
+  margin-bottom: .5em
+  padding: .5em 1em
+  border: 1px solid #ddd
+  border-bottom: 2px solid #ddd
+  border-radius: 3px
+
+.post-score
+  color: #999
+  font-size: 1.5em 
+  margin-right: .25em
+
+.post-comments
+  font-size: .9em
+
+.action
+  cursor: pointer

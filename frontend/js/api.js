@@ -30,6 +30,7 @@ var post = {
     body: "so there i was at the gorcery store",
     author: profile,
     votes: 50,
+    id: 'post',
     comments: [comment, comment, comment]
 };
 
@@ -45,7 +46,7 @@ var resource = {
     from: "doctor kwon"
 };
 
-plusApi.factory('api', function($q) {
+plusApi.factory('api', function($q, $http) {
     var fakeAPICall = function(response, args) {
         return function() {
             var defer = $q.defer();
@@ -57,6 +58,8 @@ plusApi.factory('api', function($q) {
             return defer.promise;
         };
     };
+
+    var path = "localhost:8000";
 
     return {
         profile: {
@@ -74,6 +77,9 @@ plusApi.factory('api', function($q) {
             postComment: fakeAPICall(
                 ["postId", "message"]
             ),
+            upvote: function() {
+                return $http.post(path + "/upboat");
+            },
             postStory: fakeAPICall(
                 ["title", "body"]
             ),

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from django.http import JsonResponse
 from forms import ProfileForm
@@ -7,9 +7,13 @@ from django.http import HttpResponseRedirect
 from models import *
 
 # Create your views here.
+def index(request):
+	return redirect('/static/index.html')
+
 def posts(request):
-    posts = filter(lambda x: x.flags < 5, Post.objects.all())
+    posts = filter(lambda x: x.flags > 5, Post.objects.all())
     posts = sorted(posts, key=lambda x: x.upvotes, reverse=True)
+    return JsonResponse({'posts':posts})
 
 def get_user(request):
 	username = request.POST['username']
@@ -50,6 +54,7 @@ def flag(request):
     post = models.Post.objects.get(id= post_id)[0]
     post.flags += 1
     post.save()
+    return JsonResponse({'message' : 'flagged'})
 
 def userprofile(request):
     if request.method == 'POST':
