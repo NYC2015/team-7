@@ -37,7 +37,17 @@
         <div class="bottom">
             <form role="form" ng-submit="send()">
                 <i ng-show="sending" class="fa fa-circle-o-notch fa-spin loading"></i>
+
                 <input class="form-control" ng-disabled="sending" ng-model="newMessage" type="text" id="newMessageText" placeholder="Message">
+                <div class="actions" style="margin-top: 2px; text-align: right;">
+                    <button type="button" ng-click="send()" class="mdl-button mdl-button--raised mdl-button--colored">
+                        Send
+                    </button>
+                    
+                    <button type="button" ng-click="smsSend()" class="mdl-button mdl-button--raised mdl-button--accent">
+                        SMS
+                    </button>
+                </div>
             </form>
         </div>
     </div>

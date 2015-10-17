@@ -35,7 +35,7 @@ var chatApp = angular.module('plus.chat', [
     'firebase',
 ]);
 
-chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Session, communityService) {
+chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Session, communityService, api) {
     var ref = new Firebase('https://plusapp.firebaseio.com');
 
     console.log(Session);
@@ -167,6 +167,12 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
             msgDiv.scrollTop = msgDiv.scrollHeight;
         }, 0);
     };
+
+    $scope.smsSend = function() {
+        if($scope.newMessage === "") { return }
+
+        api.text.send($scope.newMessage, user, $scope.selected.key);
+    }
 
     $scope.send = function() {
         var sendingDate = (new Date()).toISOString();
