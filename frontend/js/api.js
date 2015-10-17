@@ -85,6 +85,9 @@ plusApi.factory('api', function($q, $http, Session) {
                     username: username,
                 });
             },
+            displayName: function(profile) {
+                
+            }
         },
         chat: {
             sendMessage: fakeAPICall(
