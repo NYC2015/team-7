@@ -59,8 +59,8 @@ plusApi.factory('api', function($q, $http, Session) {
         };
     };
     
-    var path = "http://localhost:8000";
-    // var path = "https://plus-not-angular.herokuapp.com";
+    // var path = "http://localhost:8000";
+    var path = "https://plus-not-angular.herokuapp.com";
 
     var postData = function(path, data) {
         return $http({
