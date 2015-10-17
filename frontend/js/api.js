@@ -90,7 +90,7 @@ plusApi.factory('api', function($q, $http) {
         },
         community: {
             upvote: function(postId) {
-                return $http.post(path + "/upboat", {"post_id": postId});
+                return postData(path + "/upboat", {"post_id": postId});
             },
             postComment: function(postId, commentText) {
                 return $http.post(path + "/comment", {
@@ -114,7 +114,7 @@ plusApi.factory('api', function($q, $http) {
                 });
             },
             register: function(registerInfo) {
-                console.log("register");
+                return postData(path + "/register", registerInfo);
             }
         },
     };
