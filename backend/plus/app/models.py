@@ -35,3 +35,8 @@ class Post(models.Model):
 	def upVote(self):
 		self.upvotes += 1
 		self.save()
+		
+User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
+# class Community(models.Model):
+# 	pass
+

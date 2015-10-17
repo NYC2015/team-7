@@ -17,12 +17,14 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-from app.views import *
+from app.views import posts, add_user
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^posts', post),
+    url(r'^posts$', posts),
+    url(r'^add_user', add_user)
+    # url(r'^profile/$', 'views.userprofile'),
     # url(r'^profile/user', )
-    # url(r'', )
-] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
-
+    # url(r'^$', 'django.contrib.staticfiles.views.serve', kwargs = {'path' : 'index.html', 'document_root' : settings.STATIC_ROOT}),
+# ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+]
