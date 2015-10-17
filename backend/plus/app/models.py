@@ -14,7 +14,7 @@ class Profile(models.Model):
 	diseases = models.IntegerField(choices = DISEASE_CHOICES)
 	name = models.CharField(max_length = 100, blank = True)
 	pseudonym = models.CharField(max_length = 100, blank = True)
-	reputation = models.IntegerField(default = 0)
+    reputation = models.IntegerField(default = 0)
 	current_phone_number = models.CharField(max_length = 12)
 
 class Chat(models.Model):
@@ -26,7 +26,7 @@ class Message(models.Model):
 	content = models.TextField()
 
 class Post(models.Model):
-	author = models.ForeignKey(Profile, default = 0)
+	author = models.ForeignKey(Profile)
 	upvotes = models.IntegerField(default = 0)
 	flags = models.IntegerField(default = 0) # downvotes
 	title = models.TextField()
@@ -39,6 +39,7 @@ class Post(models.Model):
 
 class Comment(models.Model):
     content = models.TextField()
+    post = ForeignKey(Post)
     # extra time upvotes
     author = models.ForeignKey(Profile)
 		
