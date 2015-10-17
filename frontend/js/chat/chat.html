@@ -7,7 +7,7 @@
             <i>Chat with:</i> my fav, my other fav <br/>
             <div class="time">12 seconds ago</div>
         </div>
-        <div class="chat" ng-class="{'active': $parent.selected.key == user.key}" ng-click="selectConversation(user)" ng-repeat="user in users | orderBy: '-latest'">
+        <div class="chat" ng-class="{'active': $parent.selected.name == user.name}" ng-click="selectConversation(user)" ng-repeat="user in users | orderBy: '-latest'">
             <i>Chat with:</i> {{ user.name }} <br/>
             <div class="time">{{ user.latest }}</div>
         </div>
@@ -23,7 +23,7 @@
                 &laquo; Go Back
             </button>
             
-            <input type="text" class="to" placeholder="Recipients" ng-model="selected.alias">
+            <input type="text" class="to" placeholder="Recipients" ng-model="selected.name">
         </div>
         <div class="messages" id="messages">
             <table>

@@ -174,11 +174,11 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
 
         $scope.sending = true;
 
-        var toUser = $scope.selected.alias;
+        var toUser = $scope.selected.name;
 
         var msg = {
             from: user,
-            to: [$scope.selected.alias],
+            to: [toUser],
             date: sendingDate,
             body: $scope.newMessage,
         }
