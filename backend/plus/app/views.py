@@ -152,3 +152,13 @@ def update_reveal_to_others(request):
 			'username': user.username,
 			'reveal_to_others': profile.reveal_to_others,
 		})
+
+def update_password(request):
+	username = request.POST['username']
+	password = request.POST['password']
+	user = User.objects.get(username=username)
+	user.set_password(password)
+	user.save()
+	return JsonResponse({
+			'username': user.username
+		})
