@@ -21,7 +21,7 @@ def obj_to_dict(model_instance):
 
 # Create your views here.
 def posts(request):
-    posts = Post.objects.filter(flags__lt = 5).order_by('upvotes')
+    posts = Post.objects.filter(flags__lt = 5).order_by('upvotes')[::-1]
     posts = map(obj_to_dict, posts)
     for post in posts:
         post['comments'] = map(obj_to_dict, Comment.objects.filter(post=post['id']))
