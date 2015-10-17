@@ -7,10 +7,11 @@ plusCommunity.controller('communityCtrl',
             $scope.community = communityService.exports;
 
             $scope.upvote = communityService.upvote;
-            $scope.flag = communityService.upvote;
+            $scope.flag = communityService.flag;
             $scope.visibleName = function(author) {
                 return profileService.visibleName(Session.user, author);
             };
+            $scope.Session = Session;
 
             $scope.postStory = communityService.postStory;
             $scope.viewComments = communityService.viewComments;

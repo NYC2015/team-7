@@ -1,12 +1,12 @@
+
 <ul class="feed">
   <li class="post" ng-repeat="post in community.list track by $index">
     <div class="post-inner">
       <div class="plus-spread">
         <div class="plus-spread pull-left">
           <i ng-click="upvote(post)"class="material-icons action">arrow_drop_up</i>
-          <div class="post-score">{{post.upvotes}}</div>
           <div class="post-title"> {{post.title}} </div>
-          <div class="post-title"> {{visibleName(post.author)}} </div>
+          <div class="post-author"> {{visibleName(post.author)}} </div>
         </div>
         <span class="plus-spread">
           <span class="post-comments action"
@@ -18,10 +18,10 @@
   </li>
 </ul>
 
-<div class="main-action-button">
+<div class="main-action-button"
+     ng-show="!!Session.user.id">
   <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"
           ng-click="postStory()">
     <i class="material-icons">add</i>
   </button>
 </div>
-

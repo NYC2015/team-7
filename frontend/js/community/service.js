@@ -38,7 +38,7 @@ angular.module('plus.community').service('communityService',
             });
         };
 
-        service.upvote = function(post) {
+        service.flag = function(post) {
             api.community.flag(post.id);
         };
 
