@@ -46,7 +46,7 @@ var resource = {
     from: "doctor kwon"
 };
 
-plusApi.factory('api', function($q, $http) {
+plusApi.factory('api', function($q, $http, Session) {
     var fakeAPICall = function(response, args) {
         return function() {
             var defer = $q.defer();
@@ -65,14 +65,16 @@ plusApi.factory('api', function($q, $http) {
         return $http({
             method: 'POST',
             url: path,
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
             transformRequest: function(obj) {
                 var str = [];
-                for(var p in obj)
+                for (var p in obj)
                     str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
                 return str.join("&");
             },
-            data: data,
+            data: data
         });
     };
 
@@ -90,18 +92,27 @@ plusApi.factory('api', function($q, $http) {
         },
         community: {
             upvote: function(postId) {
-                return postData(path + "/upboat", {"post_id": postId});
+                return postData(path + "/upboat", {
+                    "post_id": postId
+                });
             },
             postComment: function(postId, commentText) {
                 return postData(path + "/comment", {
                     'content': commentText,
-                    'post_id': postId
+                    'post_id': postId,
+                    'author': Session.user.id
                 });
             },
             postStory: function(story) {
-                return postData(path + "/post", story);
+                return postData(path + "/post", {
+                    content: story.content,
+                    title: story.title,
+                    author: Session.user.id
+                });
             },
-            all: fakeAPICall({list: [post, post]})
+            all: function() {
+                return $http.get(path + "/posts");
+            }
         },
         learn: {
             all: fakeAPICall([resource, resource])
@@ -110,13 +121,12 @@ plusApi.factory('api', function($q, $http) {
             login: function(username, password) {
                 return postData(path + "/login", {
                     username: username,
-                    password: password,
+                    password: password
                 });
             },
             register: function(registerInfo) {
                 return postData(path + "/register", registerInfo);
             }
-        },
+        }
     };
 });
-

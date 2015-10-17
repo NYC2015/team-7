@@ -2,7 +2,7 @@
 
 var loginCtrls = angular.module('plus.login', ['plus.api']);
 
-loginCtrls.controller('loginCtrl', function($scope, api) {
+loginCtrls.controller('loginCtrl', function($scope, api, $state, Session) {
     $scope.login = function() {
         if ($scope.username == "" || $scope.username === undefined) {
             return;
@@ -12,8 +12,13 @@ loginCtrls.controller('loginCtrl', function($scope, api) {
             return;
         }
 
-        api.login.login($scope.username, $scope.password).then(function() {
-            // go to community if login was succesful
+        api.login.login($scope.username, $scope.password).then(function(res) {
+            Session.user.id = res.data['user_id']; 
+            Session.user.name = res.data['user'];
+            console.log(res, Session);
+            $state.go('community');
+        }, function(res) {
+            $scope.error = res;
         });
-    }
+    };
 });

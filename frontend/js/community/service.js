@@ -11,7 +11,7 @@ angular.module('plus.community').service('communityService',
         };
 
         api.community.all().then(function(res) {
-            service.exports.list = res.list;
+            service.exports.list = res.posts;
             service.ready.resolve();
         });
 

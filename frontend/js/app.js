@@ -41,4 +41,7 @@ angular.module("plus", ["ui.router",
             controller: "profileCtrl",
             templateUrl: "js/profile/profile.html"
         });
+}).value('Session', {
+    user: {id: null,
+           user: null}
 });
