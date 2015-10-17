@@ -146,12 +146,13 @@ chatApp.controller('chatCtrl', function($scope, $timeout, $firebaseObject, Sessi
     };
 
     if(!!communityService.referChat) {
+        console.log(communityService.referChat);
         $scope.selected = {
-            name: communityService.referChat.name,
+            name: communityService.referChat.id,
             messages: [],
             isNew: false
         };
-        communityService.referChat.name = null;
+        communityService.referChat = null;
     }
 
     $scope.fake = {

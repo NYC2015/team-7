@@ -59,8 +59,8 @@ plusApi.factory('api', function($q, $http, Session) {
         };
     };
     
-    // var path = "http://localhost:8000";
-    var path = "https://plus-not-angular.herokuapp.com";
+    var path = "http://localhost:8000";
+    // var path = "https://plus-not-angular.herokuapp.com";
 
     var postData = function(path, data) {
         return $http({
@@ -90,14 +90,15 @@ plusApi.factory('api', function($q, $http, Session) {
             },
         },
         profile: {
-            get: function(username) {
-                return postData(path + "/profile", {
-                    username: username,
+            nameChange: function(profile) {
+                return postData(path + "/update_name", {
+                    name: profile.name,
+                    username: profile.user
                 });
             },
             displayName: function(profile) {
                 if (profile.is_anonymous) {
-                    return profile.pseudonym
+                    return profile.pseudonym;
                 }
 
                 return profile.name;

@@ -1,9 +1,12 @@
 <div class="profile">
     <p class="header">Basic Information</p>
-    <div class="basic box">
+    <div class="basic box plus-spread">
         <input class="mdl-textfield__input"
                type="text" id="name"
+               style="flex-grow: 1"
                ng-model="profile.name"/>
+        <a class="mdl-button mdl-button--primary"
+           ng-click="submitName()">Change Name</a>
     </div>
 
     <p class="header">Location</p>
