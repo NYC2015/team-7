@@ -5,12 +5,16 @@
       <i class="material-icons action"
          ng-click="$dismiss()">close</i>
     </span>
-    <ul class="feed">
+    <ul class="feed"
+        ng-if="post.comments.length > 0">
       <li ng-repeat="comment in post.comments track by $index"
           class="post">
-        <span class="post-inner">{{comment.body}}</span>
+        <span class="post-inner">{{comment.content}}</span>
       </li>
     </ul>
+    <div ng-if="post.comments.length === 0">
+      No comments yet! Be the first.
+    </div>
   </div>
 
   <div class="plus-spread full-width">

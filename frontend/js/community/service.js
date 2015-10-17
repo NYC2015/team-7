@@ -32,10 +32,14 @@ angular.module('plus.community').service('communityService',
 
         service.upvote = function(post) {
             api.community.upvote(post.id).then(function(res) {
-                if(!post.votes)
-                    post.votes = 0;
-                post.votes++;
+                if(!post.upvotes)
+                    post.upvotes = 0;
+                post.upvotes++;
             });
+        };
+
+        service.upvote = function(post) {
+            api.community.flag(post.id);
         };
 
         service.sendComment = function(post, text) {

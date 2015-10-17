@@ -21,8 +21,11 @@ def obj_to_dict(model_instance):
 
 # Create your views here.
 def posts(request):
-    posts = Post.objects.filter(flags__lt = 5).order_by('upvotes')
+    posts = Post.objects.filter(flags__lt = 5).order_by('upvotes')[::-1]
     posts = map(obj_to_dict, posts)
+    for post in posts:
+        post['comments'] = map(obj_to_dict, Comment.objects.filter(post=post['id']))
+
     return JsonResponse({'posts':posts})
 
 # Make a post
@@ -48,8 +51,9 @@ def comment(request):
     content = request.POST['content']
     author_id = request.POST['author']
     post_id = request.POST['post_id']
+    post = Post.objects.get(id=post_id)
     author = Profile.objects.get(id=author_id)
-    c = Comment(author=author, content=content, post=post_id)
+    c = Comment(author=author, content=content, post=post)
     c.save()
 
     author.reputation += 1
@@ -80,10 +84,7 @@ def login(request):
         django_login(request, user)
         profile = Profile.objects.get(user=user)
         return JsonResponse({
-            'user' : user.username,
-            'user_id': profile.id,
-            'phone_number': profile.current_phone_number,
-            'disease': profile.diseases
+        		'profile' : obj_to_dict(profile)
             })
     else:
         return JsonResponse({ 'message': 'Incorrect username or password' })
@@ -109,3 +110,23 @@ def flag(request):
     post.flags += 1
     post.save()
     return JsonResponse({'message' : 'flagged'})
+
+def profile(request):
+	username = request.POST['username']
+	user = User.objects.get(username=username)
+	profile = Profile.objects.get(user=user)
+	return JsonResponse({
+			'profile': obj_to_dict(profile)
+		})
+
+def update_anonymity(request):
+	username = request.POST['username']
+	is_anonymous = request.POST['is_anonymous'].lower() == 'true'
+	user = User.objects.get(username=username)
+	profile = Profile.objects.get(user=user)
+	profile.is_anonymous = is_anonymous
+	profile.save()
+	return JsonResponse({
+			'username': user.username,
+			'is_anonymous': profile.is_anonymous,
+		})
