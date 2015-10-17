@@ -1,27 +1,43 @@
-angular.module("plus", [
-    "ui.router",
+angular.module("plus", ["ui.router",
     "plus.community",
     "plus.chat",
     "plus.learn",
-    "plus.profile"
+    "plus.profile",
+    "plus.header",
+    "plus.registration",
+    "plus.login",
 ]).config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/community");
 
     $stateProvider
+    .state('login', {
+        url: "/login",
+        controller: "loginCtrl",
+        templateUrl: "js/login/login.html"
+    })
+    .state('register', {
+        url: "/register",
+        controller: "registerCtrl",
+        templateUrl: "js/register/register.html"
+    })
     .state('community', {
         url: "/community",
-        templateUrl: "js/community/community.html",
+        controller: "communityCtrl",
+        templateUrl: "js/community/community.html"
     })
     .state('chat', {
         url: "/chat",
-        templateUrl: "js/chat/chat.html",
+        controller: "chatCtrl",
+        templateUrl: "js/chat/chat.html"
     })
     .state('learn', {
         url: "/learn",
-        templateUrl: "js/learn/learn.html",
+        controller: "learnCtrl",
+        templateUrl: "js/learn/learn.html"
     })
     .state('profile', {
         url: "/profile",
-        templateUrl: "js/profile/profile.html",
+        controller: "profileCtrl",
+        templateUrl: "js/profile/profile.html"
     });
 });

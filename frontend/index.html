@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 
-    <title>Helme</title>
+    <title>~+^!^+~</title>
     <meta name="description" content="Plus!">
 
     <link rel="stylesheet" href="style/vendor/material.min.css">
@@ -15,7 +15,33 @@
 
   <body ng-app="plus">
 
-    <div ui-view></div>
+    <!-- Simple header with fixed tabs. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+                mdl-layout--fixed-tabs">
+      <header class="mdl-layout__header"
+              ng-controller="headerCtrl">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Plus!</span>
+        </div>
+        <!-- Tabs -->
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+          <a href="#/community" class="mdl-layout__tab"
+             ng-class="stateName === 'community' ? 'is-active' : ''">Community</a>
+          <a href="#/chat" class="mdl-layout__tab"
+             ng-class="stateName === 'chat' ? 'is-active' : ''">Chat</a>
+          <a href="#/learn" class="mdl-layout__tab"
+             ng-class="stateName === 'learn' ? 'is-active' : ''">Learn</a>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Title</span>
+      </div>
+      <main class="mdl-layout__content">
+        <div class="page-content" ui-view> </div>
+      </main>
+    </div>
+
 
     <div ng-include="'js/app.html?cache-bust=' + cachebust"> </div>
 
@@ -25,10 +51,14 @@
     <script src="js/vendor/underscore.min.js"></script>
     <script src="js/community/controller.js"></script> 
     <script src="js/community/service.js"></script> 
+    <script src="js/header/controller.js"></script> 
     <script src="js/chat/controller.js"></script> 
     <script src="js/learn/controller.js"></script> 
     <script src="js/profile/controller.js"></script> 
+    <script src="js/login/controller.js"></script> 
+    <script src="js/register/controller.js"></script> 
     <script src="js/api.js"></script> 
     <script src="js/app.js"></script> 
+    <script src="//localhost:35729/livereload.js"></script>
   </body>
 </html>

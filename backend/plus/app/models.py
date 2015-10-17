@@ -21,11 +21,11 @@ class Chat(models.Model):
 
 class Message(models.Model):
 	chat = models.ForeignKey(Chat)
-	sender = models.ForeignKey(User)
+	sender = models.ForeignKey(Profile)
 	content = models.TextField()
 
 class Post(models.Model):
-	poster = models.ForeignKey(User)
+	poster = models.ForeignKey(Profile)
 	upvotes = models.IntegerField(default = 0)
 	flags = models.IntegerField(default = 0) # downvotes
 	title = models.TextField()
@@ -35,6 +35,11 @@ class Post(models.Model):
 	def upVote(self):
 		self.upvotes += 1
 		self.save()
+
+class Comment(models.Model):
+    content = models.TextField()
+    # extra time upvotes
+    author = models.ForeignKey(Profile)
 		
 User.profile = property(lambda u: Profile.objects.get_or_create(user=u)[0])
 # class Community(models.Model):

@@ -1,1 +1,4 @@
 *.pyc
+settings.pyc
+__init__.pyc
+wsgi.pyc

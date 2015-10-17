@@ -20,11 +20,13 @@ from django.conf import settings
 from app.views import *
 
 urlpatterns = [
+    url(r'^$', index),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^profile/$', 'views.userprofile'),
-    url(r'^post', post),
-    url(r'^posts', post),
-    # url(r'^profile/user', )
-    # url(r'', )
-] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
-
+    url(r'^posts$', posts),
+    url(r'^get_user', get_user),
+    url(r'^send', 'plus_twilio.send'),
+    url(r'^receive', 'plus_twilio.receive'),
+    url(r'^update_password', update_password),
+    url(r'^upboat', upboat),
+    url(r'^flag', flag),
+]

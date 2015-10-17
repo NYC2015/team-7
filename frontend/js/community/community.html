@@ -1,1 +1,24 @@
-<h1>I found you.</h1>
+<ul class="feed">
+  <li class="post" ng-repeat="post in community.list track by $index">
+    <div class="post-inner">
+      <div class="plus-spread pull-left">
+        <i ng-click="upvote(post)"class="material-icons action">arrow_drop_up</i>
+        <div class="post-title"> {{post.title}} </div>
+      </div>
+      <div class="plus-spread">
+        <span >
+          <span class="post-score">{{post.votes}}</span>
+          <span class="post-comments">{{post.comments.length + " comments"}}</span>
+        </span>
+      </div>
+    </div>
+  </li>
+</ul>
+
+<div class="main-action-button">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored"
+          ng-click="postStory()">
+    <i class="material-icons">add</i>
+  </button>
+</div>
+

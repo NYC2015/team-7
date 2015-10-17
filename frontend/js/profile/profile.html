@@ -1,0 +1,72 @@
+<div class="profile">
+    <p class="header">Basic Information</p>
+    <div class="basic box">
+        <input class="mdl-textfield__input"
+               type="text" id="name"
+               ng-model="profile.name"/>
+    </div>
+
+    <p class="header">Location</p>
+    <div class="location box">
+        <input class="mdl-textfield__input"
+               type="text" id="location"
+               ng-model="profile.location"/>
+    </div>
+
+    <p class="header box">Bio</p>
+    <div class="bio">
+        <textarea class="mdl-textfield__input"
+                  type="text" id="bio"
+                  ng-model="profile.bio"></textarea>
+    </div>
+
+    <p class="header">Health Status</p>
+    <div class="status box">
+        <table class="mdl-data-table mdl-table-table--selectable mdl-shadow--2dp">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbod>
+                <tr ng-repeat="(key, value) in privacy">
+                    <td>
+                        <input type="radio" name="status" value="{{ key }}"
+                               ng-model="profile.status">
+                    </td>
+                    <td>{{ value }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="header">Privacy</p>
+    <div class="privacy">
+        <table class="mdl-data-table mdl-table-table--selectable mdl-shadow--2dp">
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(key, value) in privacy">
+                    <td>
+                        <input type="radio" name="privacy" value="{{ key }}"
+                               ng-model="profile.privacy">
+                    </td>
+                    <td>{{ value }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr/>
+
+    <div class="password">
+        <button class="mdl-button mdl-button--raised mdl-button--accent">
+            Reset Password
+        </button>
+    </div>
+</div>

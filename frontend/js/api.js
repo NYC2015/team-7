@@ -28,14 +28,15 @@ var profile = {
 var post = {
     title: "free screenings + counseling at 123 roadd",
     body: "so there i was at the gorcery store",
-    poster: profile,
+    author: profile,
     votes: 50,
+    id: 'post',
     comments: [comment, comment, comment]
 };
 
 var comment = {
     body: "blah blah blah, comment",
-    poster: profile
+    author: profile
 };
 
 var resource = {
@@ -45,7 +46,7 @@ var resource = {
     from: "doctor kwon"
 };
 
-plusApi.factory('api', function($q) {
+plusApi.factory('api', function($q, $http) {
     var fakeAPICall = function(response, args) {
         return function() {
             var defer = $q.defer();
@@ -58,26 +59,31 @@ plusApi.factory('api', function($q) {
         };
     };
 
+    var path = "localhost:8000";
+
     return {
         profile: {
             current: fakeAPICall(profile)
         },
         chat: {
             sendMessage: fakeAPICall(
-                true, ["conversationId", "message"]
+                ["conversationId", "message"]
             ),
             all: fakeAPICall(
-                true, [conversation, conversation]
+                [conversation, conversation]
             )
         },
         community: {
             postComment: fakeAPICall(
-                true, ["postId", "message"]
+                ["postId", "message"]
             ),
+            upvote: function() {
+                return $http.post(path + "/upboat");
+            },
             postStory: fakeAPICall(
-                true, ["title", "body"]
+                ["title", "body"]
             ),
-            all: fakeAPICall([post, post])
+            all: fakeAPICall({list: [post, post]})
         },
         learn: {
             all: fakeAPICall([resource, resource])
