@@ -11,13 +11,9 @@
     <link rel="stylesheet" href="style/css/main.css">
   </head>
 
-  <body ng-app="plus"> 
+  <body ng-app="plus">
 
-    <div id="loading">
-      <div class="middle">
-        <loading-message />
-      </div>
-    </div>
+    <div ui-view></div
 
     <div ng-include="'js/app.html?cache-bust=' + cachebust"> </div>
 
