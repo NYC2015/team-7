@@ -23,7 +23,6 @@ def obj_to_dict(model_instance):
 def posts(request):
     posts = Post.objects.filter(flags__lt = 5).order_by('upvotes')
     posts = map(obj_to_dict, posts)
-    print(posts)
     return JsonResponse({'posts':posts})
 
 # Make a post
@@ -41,9 +40,8 @@ def post(request):
    return JsonResponse({'post_id':p.id})
 
 def leaders(request):
-   users = Profile.objects.all()
-   leaders = sorted(Profile.objects.all(), key=lambda x: x.reputation)[:30]
-   return JsonResponse({'leaders':leaders})
+   leaders = Profile.objects.all().order_by('reputation')
+   return JsonResponse( {'leaders' : leaders[:30]} )
 
 # Make a comment
 def comment(request):
