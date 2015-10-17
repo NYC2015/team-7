@@ -29,6 +29,7 @@ class Message(models.Model):
 class Post(models.Model):
 	author = models.ForeignKey(Profile)
 	upvotes = models.IntegerField(default = 0)
+	stickied = models.BooleanField(default=False)
 	flags = models.IntegerField(default = 0)
 	title = models.TextField()
 	content = models.TextField()
