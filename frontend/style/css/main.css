@@ -1,34 +1,53 @@
+/* line 1, ../sass/profile.scss */
 .profile {
   background-color: #eee;
-  padding: 10px; }
-  .profile hr {
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%; }
-  .profile .header {
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 12px;
-    color: #444; }
-  .profile .password {
-    text-align: right;
-    padding: 10px; }
-  .profile .box {
-    margin-bottom: 5px; }
-  .profile .status td, .profile .privacy td {
-    text-align: left; }
+  padding: 10px;
+}
+/* line 5, ../sass/profile.scss */
+.profile hr {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+/* line 11, ../sass/profile.scss */
+.profile .header {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+  color: #444;
+}
+/* line 18, ../sass/profile.scss */
+.profile .password {
+  text-align: right;
+  padding: 10px;
+}
+/* line 23, ../sass/profile.scss */
+.profile .box {
+  margin-bottom: 5px;
+}
+/* line 27, ../sass/profile.scss */
+.profile .status td, .profile .privacy td {
+  text-align: left;
+}
 
+/* line 1, ../sass/login.scss */
 .login, .registration {
   padding: 10px;
-  background-color: #eee; }
-  .login .header, .registration .header {
-    font-size: 12px;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #444; }
+  background-color: #eee;
+}
+/* line 6, ../sass/login.scss */
+.login .header, .registration .header {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #444;
+}
 
+/* line 2, ../sass/chat.scss */
 .chat .text-muted {
-  color: #999; }
+  color: #999;
+}
+/* line 6, ../sass/chat.scss */
 .chat .selection {
   position: fixed;
   top: 0px;
@@ -37,28 +56,42 @@
   right: 0px;
   background-color: #ddd;
   overflow: auto;
-  overflow-x: hidden; }
-  .chat .selection .select {
-    background-color: #3f51b5;
-    box-shadow: black 0px 0px 2px;
-    margin: 10px;
-    padding: 10px;
-    text-align: center; }
-    .chat .selection .select h3 {
-      margin: 0;
-      color: white;
-      font-size: 18px; }
-  .chat .selection .chat {
-    background-color: #fff;
-    margin: 10px;
-    box-shadow: #555 0px 0px 2px; }
-    .chat .selection .chat i {
-      color: #999; }
-    .chat .selection .chat .time {
-      font-size: 12px; }
-    .chat .selection .chat:hover {
-      cursor: pointer;
-      background-color: #efefef; }
+  overflow-x: hidden;
+}
+/* line 17, ../sass/chat.scss */
+.chat .selection .select {
+  background-color: #3f51b5;
+  box-shadow: black 0px 0px 2px;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+/* line 26, ../sass/chat.scss */
+.chat .selection .select h3 {
+  margin: 0;
+  color: white;
+  font-size: 18px;
+}
+/* line 33, ../sass/chat.scss */
+.chat .selection .chat {
+  background-color: #fff;
+  margin: 10px;
+  box-shadow: #555 0px 0px 2px;
+}
+/* line 38, ../sass/chat.scss */
+.chat .selection .chat i {
+  color: #999;
+}
+/* line 42, ../sass/chat.scss */
+.chat .selection .chat .time {
+  font-size: 12px;
+}
+/* line 46, ../sass/chat.scss */
+.chat .selection .chat:hover {
+  cursor: pointer;
+  background-color: #efefef;
+}
+/* line 53, ../sass/chat.scss */
 .chat .conversation {
   position: fixed;
   top: 0px;
@@ -66,80 +99,116 @@
   left: 0px;
   right: 0px;
   background-color: #E1E5EC;
-  height: 100%; }
+  height: 100%;
+}
+/* line 63, ../sass/chat.scss */
 .chat .addMessage {
   border-bottom: 1px #b6b6b6 solid;
   text-align: right;
-  padding: 5px; }
+  padding: 5px;
+}
+/* line 69, ../sass/chat.scss */
 .chat .chat {
   padding: 10px;
   border-bottom: 1px #e1e1e1 solid;
-  /*border-top: 1px #ffffff solid;*/ }
+  /*border-top: 1px #ffffff solid;*/
+}
+/* line 75, ../sass/chat.scss */
 .chat .chat.active {
   background-color: #008CBA;
-  color: white; }
+  color: white;
+}
+/* line 80, ../sass/chat.scss */
 .chat .conversation .top {
   padding: 9px 5px 8px 5px;
-  border-bottom: 1px #cecece solid; }
+  border-bottom: 1px #cecece solid;
+}
+/* line 85, ../sass/chat.scss */
 .chat .conversation .bottom {
   margin: 10px;
   position: absolute;
   bottom: 0px;
   left: 0px;
-  right: 0px; }
+  right: 0px;
+}
+/* line 93, ../sass/chat.scss */
 .chat .conversation .bottom form {
-  position: relative; }
+  position: relative;
+}
+/* line 97, ../sass/chat.scss */
 .chat .conversation .bottom .loading {
   position: absolute;
   top: 10px;
   right: 8px;
-  color: #178D00; }
+  color: #178D00;
+}
+/* line 104, ../sass/chat.scss */
 .chat .conversation .messages {
   position: absolute;
   top: 49px;
   bottom: 56px;
   left: 5px;
   right: 5px;
-  overflow: auto; }
+  overflow: auto;
+}
+/* line 113, ../sass/chat.scss */
 .chat .conversation .messages table {
   height: 100%;
   width: 100%;
   margin: 0;
-  table-layout: fixed; }
+  table-layout: fixed;
+}
+/* line 120, ../sass/chat.scss */
 .chat .conversation .messages .message {
   margin: 5px;
   padding: 8px;
   clear: both;
   border-radius: 5px;
   max-width: 75%;
-  word-wrap: break-word; }
+  word-wrap: break-word;
+}
+/* line 129, ../sass/chat.scss */
 .chat .conversation .timestamp {
   padding: 10px;
   clear: both;
   text-align: center;
   font-size: 10px;
-  color: #545454; }
+  color: #545454;
+}
+/* line 137, ../sass/chat.scss */
 .chat .conversation .messages .message.sender {
   float: right;
-  background-color: #92C4F9; }
+  background-color: #92C4F9;
+}
+/* line 142, ../sass/chat.scss */
 .chat .conversation .messages .message.receiver {
   float: left;
-  background-color: #d6d6d6; }
+  background-color: #d6d6d6;
+}
+/* line 147, ../sass/chat.scss */
 .chat input {
   width: 100%;
-  font-size: 18px; }
+  font-size: 18px;
+}
+/* line 152, ../sass/chat.scss */
 .chat input.to {
   width: 400px;
   font-size: 30px;
   border: none;
-  background-color: #E1E5EC; }
+  background-color: #E1E5EC;
+}
+/* line 159, ../sass/chat.scss */
 .chat .back {
   position: relative;
   top: -7px;
-  margin-right: 5px; }
+  margin-right: 5px;
+}
+/* line 165, ../sass/chat.scss */
 .chat .back, .chat .to {
-  display: inline-block; }
+  display: inline-block;
+}
 
+/* line 13, ../sass/main.sass */
 *, *:after, *:before {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -149,85 +218,128 @@
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none; }
+  user-select: none;
+}
 
+/* line 19, ../sass/main.sass */
 .mdl-layout__header-row, .mdl-layout__tab-bar-container, .mdl-layout__tab-bar {
   height: 44px;
-  overflow: visible; }
+  overflow: visible;
+}
 
+/* line 23, ../sass/main.sass */
 .mdl-layout__tab-bar-container {
-  height: 43px; }
+  height: 43px;
+}
 
+/* line 26, ../sass/main.sass */
 .mdl-layout__tab {
   height: 44px;
-  line-height: 42px; }
-  .mdl-layout__tab:focus {
-    outline: none; }
-  .mdl-layout__tab:hover {
-    color: white; }
-  .mdl-layout__tab.is-active {
-    border-bottom: 3px solid white;
-    color: white; }
+  line-height: 42px;
+}
+/* line 29, ../sass/main.sass */
+.mdl-layout__tab:focus {
+  outline: none;
+}
+/* line 32, ../sass/main.sass */
+.mdl-layout__tab:hover {
+  color: white;
+}
+/* line 35, ../sass/main.sass */
+.mdl-layout__tab.is-active {
+  border-bottom: 3px solid white;
+  color: white;
+}
 
+/* line 39, ../sass/main.sass */
 .main-action-button {
   bottom: 2em;
   right: 4em;
-  position: fixed; }
+  position: fixed;
+}
 
+/* line 44, ../sass/main.sass */
 .plus-spread {
   display: flex;
   justify-content: space-between;
-  align-items: center; }
-  .plus-spread.vertical {
-    flex-direction: column; }
-  .plus-spread.align-bottom {
-    align-items: bottom; }
-  .plus-spread.pull-left {
-    justify-content: flex-start; }
+  align-items: center;
+}
+/* line 48, ../sass/main.sass */
+.plus-spread.vertical {
+  flex-direction: column;
+}
+/* line 50, ../sass/main.sass */
+.plus-spread.align-bottom {
+  align-items: bottom;
+}
+/* line 52, ../sass/main.sass */
+.plus-spread.pull-left {
+  justify-content: flex-start;
+}
 
+/* line 54, ../sass/main.sass */
 .full-width {
-  width: 100%; }
+  width: 100%;
+}
 
+/* line 56, ../sass/main.sass */
 .full-height {
-  height: 100%; }
+  height: 100%;
+}
 
+/* line 59, ../sass/main.sass */
 .mdl-layout-title .mdl-button {
-  color: white; }
+  color: white;
+}
 
+/* line 62, ../sass/main.sass */
 .mdl-layout {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  top: 0; }
+  top: 0;
+}
 
+/* line 69, ../sass/main.sass */
 .mdl-layout__container {
   height: 100%;
   position: absolute;
-  width: 100%; }
+  width: 100%;
+}
 
+/* line 74, ../sass/main.sass */
 .mdl-layout__content {
   background: #f9f9f9;
   transition: 200ms ease-in-out;
   transform: translateX(0px);
   display: flex;
   flex-direction: row;
-  justify-content: center; }
+  justify-content: center;
+  padding-bottom: 30px;
+}
 
+/* line 83, ../sass/main.sass */
 .page-content {
   flex-grow: 1;
   width: 100%;
   max-width: 1060px;
   z-index: 1;
-  background: #f9f9f9; }
-  .page-content::-webkit-scrollbar {
-    display: none; }
+  background: #f9f9f9;
+}
+/* line 87, ../sass/main.sass */
+.page-content::-webkit-scrollbar {
+  display: none;
+}
 
 /* Post styling */
+/* line 94, ../sass/main.sass */
 .feed {
   list-style: none;
-  padding: 0.75em; }
+  padding: 0.75em;
+}
 
+/* line 98, ../sass/main.sass */
 .post {
   background: white;
   width: 100%;
@@ -235,27 +347,47 @@
   padding: 0.5em 1em;
   border: 1px solid #ddd;
   border-bottom: 2px solid #ddd;
-  border-radius: 3px; }
+  border-radius: 3px;
+}
 
+/* line 107, ../sass/main.sass */
 .post-score {
   color: #999;
-  margin-right: 0.25em; }
+  margin-right: 0.25em;
+}
 
+/* line 111, ../sass/main.sass */
 .post-comments {
-  font-size: 0.9em; }
+  font-size: 0.9em;
+  margin-right: 0.5em;
+}
 
+/* line 115, ../sass/main.sass */
+.post-author {
+  color: #777;
+}
+
+/* line 118, ../sass/main.sass */
 .action {
-  cursor: pointer; }
+  cursor: pointer;
+}
 
+/* line 121, ../sass/main.sass */
 i.action, .action i {
-  color: #bbb; }
-  i.action:hover, .action i:hover {
-    color: #555; }
+  color: #bbb;
+}
+/* line 123, ../sass/main.sass */
+i.action:hover, .action i:hover {
+  color: #555;
+}
 
+/* line 126, ../sass/main.sass */
 .flag {
-  font-size: 1.1em; }
+  font-size: 1.1em;
+}
 
 /* Dialog */
+/* line 131, ../sass/main.sass */
 .modal-dialog, .modal-backdrop {
   position: fixed;
   display: flex;
@@ -267,46 +399,67 @@ i.action, .action i {
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0; }
-  .modal-dialog .modal-content, .modal-backdrop .modal-content {
-    position: absolute;
-    top: 2em;
-    right: 2em;
-    bottom: 2em;
-    left: 2em;
-    background: white;
-    box-shadow: 1px 1px 10px #555;
-    font-size: 1.1em;
-    line-height: 1.5em;
-    padding: 1em; }
-    .modal-dialog .modal-content .submit, .modal-backdrop .modal-content .submit {
-      margin-top: 12px; }
-    .modal-dialog .modal-content h2, .modal-backdrop .modal-content h2 {
-      margin-top: 5px; }
-    .modal-dialog .modal-content label, .modal-backdrop .modal-content label {
-      display: block;
-      font-size: 0.9em; }
-    .modal-dialog .modal-content h5, .modal-backdrop .modal-content h5 {
-      display: inline-block;
-      margin: 0; }
-    .modal-dialog .modal-content textarea, .modal-backdrop .modal-content textarea {
-      width: 100%;
-      outline: none;
-      border: none;
-      border-bottom: 1px solid #ccc;
-      font-size: 1em; }
-    .modal-dialog .modal-content input, .modal-backdrop .modal-content input {
-      outline: none; }
-    .modal-dialog .modal-content .modal-title, .modal-backdrop .modal-content .modal-title {
-      padding-bottom: 1em;
-      border-bottom: 1px solid #ddd; }
-    .modal-dialog .modal-content .profile, .modal-backdrop .modal-content .profile {
-      background: white; }
-    .modal-dialog .modal-content .submit, .modal-backdrop .modal-content .submit {
-      margin-top: 1em; }
+  left: 0;
+}
+/* line 144, ../sass/main.sass */
+.modal-dialog .modal-content, .modal-backdrop .modal-content {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  bottom: 2em;
+  left: 2em;
+  background: white;
+  box-shadow: 1px 1px 10px #555;
+  font-size: 1.1em;
+  line-height: 1.5em;
+  padding: 1em;
+}
+/* line 155, ../sass/main.sass */
+.modal-dialog .modal-content .submit, .modal-backdrop .modal-content .submit {
+  margin-top: 12px;
+}
+/* line 157, ../sass/main.sass */
+.modal-dialog .modal-content h2, .modal-backdrop .modal-content h2 {
+  margin-top: 5px;
+}
+/* line 159, ../sass/main.sass */
+.modal-dialog .modal-content label, .modal-backdrop .modal-content label {
+  display: block;
+  font-size: 0.9em;
+}
+/* line 162, ../sass/main.sass */
+.modal-dialog .modal-content h5, .modal-backdrop .modal-content h5 {
+  display: inline-block;
+  margin: 0;
+}
+/* line 165, ../sass/main.sass */
+.modal-dialog .modal-content textarea, .modal-backdrop .modal-content textarea {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  font-size: 1em;
+}
+/* line 171, ../sass/main.sass */
+.modal-dialog .modal-content input, .modal-backdrop .modal-content input {
+  outline: none;
+}
+/* line 173, ../sass/main.sass */
+.modal-dialog .modal-content .modal-title, .modal-backdrop .modal-content .modal-title {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #ddd;
+}
+/* line 176, ../sass/main.sass */
+.modal-dialog .modal-content .profile, .modal-backdrop .modal-content .profile {
+  background: white;
+}
+/* line 178, ../sass/main.sass */
+.modal-dialog .modal-content .submit, .modal-backdrop .modal-content .submit {
+  margin-top: 1em;
+}
 
+/* line 181, ../sass/main.sass */
 .modal-backdrop {
   opacity: 0.3;
-  background-color: #555; }
-
-/*# sourceMappingURL=main.css.map */
+  background-color: #555;
+}
