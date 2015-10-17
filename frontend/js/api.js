@@ -8,7 +8,7 @@ var fakeAPICall = function(response, args) {
 
         setTimeout(function() {
             defer.resolve(response);
-        }, 0);
+        }, 15);
 
         return defer.promise;
     }
@@ -17,17 +17,15 @@ var fakeAPICall = function(response, args) {
 plsApi.factory('plusAPI', function($q) {
     return {
         profile: {
-            current: function() {
-                return {
-                    name: "Hunter Leath",
-                    picture: "http://google.com",
-                    privacy: {
-                        none: true,
-                        hiv: true,
-                        aids: false,
-                    }
+            current: fakeAPICall({
+                name: "Hunter Leath",
+                picture: "http://google.com",
+                privacy: {
+                    none: true,
+                    hiv: true,
+                    aids: false,
                 }
-            }
+            })
         },
         chat: {
             sendMessage: function(conversationId, message) {
