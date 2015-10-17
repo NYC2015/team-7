@@ -58,8 +58,9 @@ plusApi.factory('api', function($q, $http, Session) {
             return defer.promise;
         };
     };
-
-    var path = "http://localhost:8000";
+    
+    // var path = "http://localhost:8000";
+    var path = "https://plus-not-angular.herokuapp.com";
 
     var postData = function(path, data) {
         return $http({
@@ -80,7 +81,18 @@ plusApi.factory('api', function($q, $http, Session) {
 
     return {
         profile: {
-            current: fakeAPICall(profile)
+            get: function(username) {
+                return postData(path + "/profile", {
+                    username: username,
+                });
+            },
+            displayName: function(profile) {
+                if (profile.is_anonymous) {
+                    return profile.pseudonym
+                }
+
+                return profile.name;
+            }
         },
         chat: {
             sendMessage: fakeAPICall(
