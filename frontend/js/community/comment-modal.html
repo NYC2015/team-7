@@ -1,0 +1,20 @@
+<div class="plus-spread vertical full-height full-width">
+  <div class="full-width">
+    <span class="plus-spread modal-title">
+      <h5 style="max-width: 90%">{{post.title}}</h5>
+      <i class="material-icons action"
+         ng-click="$dismiss()">close</i>
+    </span>
+    <ul class="feed">
+      <li ng-repeat="comment in post.comments track by $index"
+          class="post">
+        <span class="post-inner">{{comment.body}}</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="plus-spread full-width">
+    <textarea></textarea>
+    <a class="mdl-button mdl-button--primary">Send</a>
+  </div>
+</div>
