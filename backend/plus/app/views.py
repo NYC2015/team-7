@@ -10,7 +10,7 @@ import datetime
 
 # Create your views here.
 def posts(request):
-    posts = filter(lambda x: x.flags > 5, Post.objects.all())
+    posts = filter(lambda x: x.flags < 5, Post.objects.all())
     posts = sorted(posts, key=lambda x: x.upvotes, reverse=True)
     return JsonResponse({'posts':posts})
 
@@ -31,7 +31,7 @@ def post(request):
 
 def leaders(request):
    users = Profile.objects.all()
-   leaders = sorted(users, key=lambda x: x.reputation, reverse=True)[-30:]
+   leaders = sorted(Profile.objects.all(), key=lambda x: x.reputation, reverse=True)[-30:]
    return JsonResponse({'leaders':leaders})
 
 # Make a comment
