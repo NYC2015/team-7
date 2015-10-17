@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from django.http import JsonResponse
 from forms import ProfileForm
@@ -7,6 +7,9 @@ from django.http import HttpResponseRedirect
 from models import *
 
 # Create your views here.
+def index(request):
+	return redirect('/static/index.html')
+
 def posts(request):
     posts = filter(lambda x: x.flags > 5, Post.objects.all())
     posts = sorted(posts, key=lambda x: x.upvotes, reverse=True)

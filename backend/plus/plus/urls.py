@@ -20,6 +20,7 @@ from django.conf import settings
 from app.views import *
 
 urlpatterns = [
+    url(r'^$', index),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^posts$', posts),
     url(r'^get_user', get_user),
@@ -28,9 +29,4 @@ urlpatterns = [
     url(r'^update_password', update_password),
     url(r'^upboat', upboat),
     url(r'^flag', flag),
-    # url(r'^$', 'django.contrib.staticfiles.views.serve', kwargs = {'path' : 'index.html', 'document_root' : settings.STATIC_ROOT}),
-    # ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
-    ]
-    # url(r'^profile/user', )
-    # url(r'', )
-#    ] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+]
