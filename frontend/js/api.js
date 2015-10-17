@@ -16,6 +16,7 @@ var fakeAPICall = function(response, args) {
 
 var conversation = {
     id: 10,
+    name: undefined,
     participants: [{
         id: 10,
         name: "Hunter Leath",
@@ -55,7 +56,7 @@ plsApi.factory('api', function($q) {
                 ["conversationId", "message"]
             ),
             all: fakeAPICall({
-                
+                [conversation, conversation]
             }, [])
         }
     }
